@@ -1,19 +1,23 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {NewsfeedPageComponent} from './newsfeed-page/newsfeed-page.component'
-import {StocksPageComponent} from './stocks-page/stocks-page.component'
+import {NewsfeedPageComponent} from './newsfeed-page/newsfeed-page.component';
+import {StocksPageComponent} from './stocks-page/stocks-page.component';
 import {LoginComponent} from './login/login.component';
 import {MypageComponent} from './mypage/mypage.component';
 import {SignupComponent} from './signup/signup.component';
 import {EmailComponent} from './email/email.component';
+import {HomepageComponent} from './homepage/homepage.component';
+import {LoginModalComponent} from './login-modal/login-modal.component';
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'homepage', pathMatch: 'full'},
+  {path: 'homepage', component: HomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'email-login', component: EmailComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'mypage', component: MypageComponent},
   {path: 'newsfeed', component: NewsfeedPageComponent},
-  {path: 'stocks', component: StocksPageComponent}
+  {path: 'stocks', component: StocksPageComponent},
+  {path: 'login-modal', component: LoginModalComponent}
 
 ];
 @NgModule({

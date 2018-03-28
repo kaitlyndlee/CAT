@@ -17,6 +17,7 @@ import {ProfileComponent} from './profile/profile.component';
 import { NewsfeedPageComponent } from './newsfeed-page/newsfeed-page.component';
 import { StocksPageComponent } from './stocks-page/stocks-page.component';
 import { MypageComponent } from './mypage/mypage.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
@@ -39,7 +40,8 @@ messagingSenderId: "233921961729"
     ProfileComponent,
     NewsfeedPageComponent,
     StocksPageComponent,
-    MypageComponent
+    MypageComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
