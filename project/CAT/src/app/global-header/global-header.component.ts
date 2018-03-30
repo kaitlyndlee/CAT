@@ -13,3 +13,4 @@ export class GlobalHeaderComponent implements OnInit {
   }
 
 }
+

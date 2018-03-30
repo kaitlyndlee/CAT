@@ -59,7 +59,7 @@ span.psw {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -76,6 +76,9 @@ span.psw {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
+    height: 55%;
+    z-index: 5; /* Sit on top */
+
 }
 
 /* The Close Button (x) */
@@ -126,27 +129,46 @@ span.psw {
 
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
       <img src="../../assets/anonymous.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
       <app-login></app-login>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+      <!--<label>-->
+        <!--<input type="checkbox" checked="checked" name="remember"> Remember me-->
+      <!--</label>-->
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
+    <!--<div class="container" style="background-color:#f1f1f1">-->
+      <!--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
+      <!--<span class="psw">Forgot <a href="#">password?</a></span>-->
+    <!--</div>-->
   </form>
 </div>
 
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
+
+Close the model on route change
+var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
+  // this will listen for route changes and call the callback
+  $scope.$on('$routeChangeStart', function(){
+    $modalInstance.close();
+  });
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {

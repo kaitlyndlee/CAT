@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+
+
 
 @Component({
   selector: 'app-mypage',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MypageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  signOut() {
+    this.authService.logout();
   }
 
 }
