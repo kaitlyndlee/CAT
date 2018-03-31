@@ -41,6 +41,10 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 import { MarketTableComponent } from './market-table/market-table.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+import { HomepageComponent } from './homepage/homepage.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
+import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
@@ -69,7 +73,11 @@ messagingSenderId: "233921961729"
     StockTableComponent,
     LinechartComponent,
     MarketTableComponent,
-    SidenavComponent
+    SidenavComponent,
+    HomepageComponent,
+    AboutPageComponent,
+    GlossaryPageComponent,
+    TutorialPageComponent
   ],
   imports: [
     BrowserModule,
