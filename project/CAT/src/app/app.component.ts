@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {KeywordReaderComponent} from "./keyword-reader/keyword-reader.component";
+import {StockMarketModel} from "./stock-market.model";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+
+  stockMarket : StockMarketModel;
+
+  constructor(private jsonreader : KeywordReaderComponent) {
+
+  }
+  ngOnInit(): void {
+    this.stockMarket = new StockMarketModel();
+  }
 }
