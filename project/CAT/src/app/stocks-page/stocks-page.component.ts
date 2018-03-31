@@ -12,13 +12,13 @@ import {StockMarketModel} from "../stock-market.model";
 
 export class StocksPageComponent implements OnInit {
 
-  @Input() stockMarket : StockMarketModel;
+  stockMarket : StockMarketModel;
   constructor() {
 
   }
 
   ngOnInit() {
-
+    this.stockMarket = new StockMarketModel();
   }
 
 }
