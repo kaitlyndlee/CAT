@@ -9,12 +9,10 @@ import {StockMarketModel} from "./stock-market.model";
 })
 export class AppComponent implements OnInit {
 
-  stockMarket : StockMarketModel;
-
   constructor(private jsonreader : KeywordReaderComponent) {
 
   }
   ngOnInit(): void {
-    this.stockMarket = new StockMarketModel();
+
   }
 }
