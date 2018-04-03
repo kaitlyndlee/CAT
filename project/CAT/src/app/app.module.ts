@@ -9,6 +9,7 @@ import { GlobalHeaderComponent } from './global-header/global-header.component';
 import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {AppComponent} from './app.component';
 import {AuthService} from './auth.service';
 import {LoginComponent} from './login/login.component';
@@ -93,7 +94,9 @@ messagingSenderId: "233921961729"
     FusionChartsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
+
   ],
   exports: [
     BrowserModule,

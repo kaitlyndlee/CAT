@@ -1,5 +1,17 @@
 <app-login-modal></app-login-modal>
 
+<div *ngIf="authService.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
+</div>
+
+<ng-template #authenticated>
+  <div *ngIf="authService.user | async as user">
+    <h3>Hi, {{ user.displayName }}</h3>
+    <p>UID: {{ user.uid }}</p>
+    <p>email: {{ user.email }}</p>
+  </div>
+</ng-template>
+
 <div class="py-5">
     <div class="container">
       <div class="row">
