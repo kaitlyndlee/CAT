@@ -2,9 +2,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css">
 
-  <nav class="navbar navbar-fixed-top navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-fixed-top navbar-expand-md bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Capital Activity Tracker
+      <a class="navbar-brand text-white" href="#">Capital Activity Tracker
         <br>
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
@@ -35,12 +35,15 @@
         </div>
         <div *ngIf="isLoggedIn()">
           <div *ngIf="authService.user | async as user">
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">User Info <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><button (click)="signOut()">Sign Out</button></li>
-                <li><a style="color: white" href="mypage">My Page</a></li>
-              </ul>
-            </li>
+            <div class="dropdown">
+              <button class="dropdown-toggle text-white" style="outline: none;border: none;background-color: transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Welcome
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a style="text-decoration: none;color: white" href="mypage"><p align="center"> My Page</p></a>
+                <a><button class="btn text-white" (click)="signOut()">Sign Out</button></a>
+              </div>
+            </div>
           </div>
         </div>
         <!--<a class="btn navbar-btn ml-2 text-black" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-user-circle-o" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"></i> Sign in</a>-->

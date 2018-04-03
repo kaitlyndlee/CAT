@@ -15,19 +15,22 @@ interface User {
 @Injectable()
 export class AuthService {
   user: Observable<User>;
-  private isloggedIn = false;
+  private authState: any;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router) {
+
     //// Get auth data, then get firestore user document || null
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth;
+      });
+
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          this.isloggedIn = true;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          this.isloggedIn = false;
           return Observable.of(null);
         }
       });
@@ -47,7 +50,7 @@ export class AuthService {
   emailSignup(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Sucess', value);
+        console.log('Success', value);
         this.router.navigateByUrl('/profile');
       })
       .catch(error => {
@@ -59,8 +62,8 @@ export class AuthService {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider)
       .then(value => {
-        console.log('Sucess', value),
-          // console.log('The given name is ' + value.additionalUserInfo.profile.given_name),
+        console.log('Success', value);
+        // console.log('The given name is ' + value.additionalUserInfo.profile.given_name),
           this.router.navigateByUrl('/mypage');
       })
       .catch(error => {
@@ -100,6 +103,6 @@ export class AuthService {
   }
 
   isLoggedIn () {
-    return this.isloggedIn;
+    return this.authState !== null;
   }
 }

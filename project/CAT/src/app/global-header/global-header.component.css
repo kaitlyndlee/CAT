@@ -1,7 +1,11 @@
 nav {
-  color: black;
+  background-color: black;
 }
 
 .dropdown-menu{
-  background: black;
+  background: cadetblue;
 }
+.btn {
+  background-color: transparent;
+}
+
