@@ -19,4 +19,12 @@ export class MypageComponent implements OnInit {
     this.authService.logout();
   }
 
+  addFave(name) {
+    this.authService.addStockToFave(name);
+  }
+
+  getUserStocks() {
+    console.log(this.authService.getUserStocks()[0]);
+    return this.authService.getUserStocks();
+  }
 }
