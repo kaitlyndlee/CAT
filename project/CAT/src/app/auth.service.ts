@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
@@ -12,16 +12,23 @@ interface User {
   displayName?: string;
 }
 
+interface Stock {
+  name: string;
+}
+
 @Injectable()
 export class AuthService {
-  user: Observable<User>;
+  private user: Observable<User>;
+  private stockCollection: AngularFirestoreCollection<Stock>;
+  stocks: Observable<Stock[]>;
   private authState: any;
+  userID: string = null;
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router) {
 
-    //// Get auth data, then get firestore user document || null
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth;
       });
@@ -29,6 +36,9 @@ export class AuthService {
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
+          this.userID = user.uid;
+          this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
+          this.stocks = this.stockCollection.valueChanges();
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return Observable.of(null);
@@ -62,8 +72,6 @@ export class AuthService {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider)
       .then(value => {
-        console.log('Success', value);
-        // console.log('The given name is ' + value.additionalUserInfo.profile.given_name),
           this.router.navigateByUrl('/mypage');
       })
       .catch(error => {
@@ -76,10 +84,6 @@ export class AuthService {
       this.router.navigate(['/']);
     });
   }
-
-  // private oAuthLogin(provider) {
-  //   return this.afAuth.auth.signInWithPopup(provider);
-  // }
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
@@ -88,7 +92,7 @@ export class AuthService {
   }
 
   private updateUserData(user) {
-    // Sets user data to firestore on login
+    // Sets user data to Firestore on login
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
@@ -99,10 +103,26 @@ export class AuthService {
     };
 
     return userRef.set(data, { merge: true });
-
   }
 
-  isLoggedIn () {
+  public isLoggedIn () {
     return this.authState !== null;
+  }
+
+  getUserStocks() {
+    return this.stocks;
+  }
+
+  addStockToFave(name) {
+    // Create a path in Firestore to add our new stock
+    const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
+
+    // Create the Stock object to add to Firestore
+    const newStock: Stock = {
+      name: name,
+    };
+
+    // Set the data in Firestore
+    return stockRef.set(newStock);
   }
 }

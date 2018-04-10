@@ -95,11 +95,35 @@ export class StockData {
     this.volume    = jsonFeed.Volume;
   }
 
-  getDifference() : string {
+  getDifference(): string {
     return (this.close - this.open).toFixed(2);
   }
 
-  getPercent() : string {
+  getPercent(): string {
     return (( (this.open - this.close) / this.close ) * 100 ).toFixed(2);
+  }
+
+  getTimeStamp(): string {
+    return this.timestamp;
+  }
+
+  getClose(): number {
+    return this.close;
+  }
+
+  getHigh(): number {
+    return this.high;
+  }
+
+  getLow(): number {
+    return this.low;
+  }
+
+  getOpen(): number {
+    return this.open;
+  }
+
+  getVolume(): number {
+    return this.volume;
   }
 }

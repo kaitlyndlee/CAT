@@ -49,12 +49,12 @@ import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
-apiKey: "AIzaSyAVD-QZUuKapu1pVOM9s2XIEkMulTk8SlY",
-authDomain: "capital-activity-tracker.firebaseapp.com",
-databaseURL: "https://capital-activity-tracker.firebaseio.com",
-projectId: "capital-activity-tracker",
-storageBucket: "",
-messagingSenderId: "233921961729"
+  apiKey: "AIzaSyCUFrGrIA6cc8QaKxhEJEcElxAIr0uJ4ns",
+  authDomain: "fir-2fbf6.firebaseapp.com",
+  databaseURL: "https://fir-2fbf6.firebaseio.com",
+  projectId: "fir-2fbf6",
+  storageBucket: "fir-2fbf6.appspot.com",
+  messagingSenderId: "487575271832"
 };
 
 @NgModule({
