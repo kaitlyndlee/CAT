@@ -46,6 +46,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
 import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
+import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
@@ -78,7 +79,8 @@ const firebaseConfig = {
     HomepageComponent,
     AboutPageComponent,
     GlossaryPageComponent,
-    TutorialPageComponent
+    TutorialPageComponent,
+    FirestoreComponent
   ],
   imports: [
     BrowserModule,

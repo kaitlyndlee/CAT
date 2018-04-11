@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import {DatabaseService} from '../database.service';
 
 
 
@@ -11,7 +12,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 })
 export class MypageComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService, private db: DatabaseService) { }
 
   ngOnInit() {}
 
