@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Stock} from "../Stock.model";
-import {StockMarketModel} from "../stock-market.model";
+import {Stock} from '../Stock.model';
+import {StockMarketModel} from '../stock-market.model';
+import {DatabaseService} from '../database.service';
 
 @Component({
   selector: 'app-stocks-page',
@@ -12,8 +13,8 @@ import {StockMarketModel} from "../stock-market.model";
 
 export class StocksPageComponent implements OnInit {
 
-  stockMarket : StockMarketModel;
-  constructor() {
+  stockMarket: StockMarketModel;
+  constructor(public db: DatabaseService) {
 
   }
 
