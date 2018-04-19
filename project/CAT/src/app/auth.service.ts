@@ -18,11 +18,13 @@ interface Stock {
 
 @Injectable()
 export class AuthService {
-  private user: Observable<User>;
+  public user: Observable<User>;
   private stockCollection: AngularFirestoreCollection<Stock>;
-  stocks: Observable<Stock[]>;
+  private stocks: Observable<Stock[]>;
   private authState: any;
-  userID: string = null;
+  private userID: string;
+  private displayName: string;
+  private email: string;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -36,9 +38,11 @@ export class AuthService {
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          this.userID = user.uid;
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
           this.stocks = this.stockCollection.valueChanges();
+          this.userID = user.uid;
+          this.displayName =  user.displayName;
+          this.email = user.email;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return Observable.of(null);
@@ -81,7 +85,9 @@ export class AuthService {
 
   logout() {
     this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/']);
+      if (this.router.url === '/mypage') {
+        this.router.navigate(['/']);
+      }
     });
   }
   private oAuthLogin(provider) {
@@ -109,10 +115,6 @@ export class AuthService {
     return this.authState !== null;
   }
 
-  getUserStocks() {
-    return this.stocks;
-  }
-
   addStockToFave(name) {
     // Create a path in Firestore to add our new stock
     const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
@@ -124,5 +126,21 @@ export class AuthService {
 
     // Set the data in Firestore
     return stockRef.set(newStock);
+  }
+
+  getName() {
+    return this.displayName;
+  }
+
+  getEmail() {
+    return this.email;
+  }
+
+  getID() {
+    return this.userID;
+  }
+
+  getUserStocks() {
+    return this.stocks;
   }
 }

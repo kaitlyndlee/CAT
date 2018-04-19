@@ -1,21 +1,15 @@
 <app-login-modal></app-login-modal>
 
-<div *ngIf="authService.user | async; then authenticated else guest">
-  <!-- template will replace this div -->
+<div *ngIf="authService.user | async as user">
+  <h3>Hi, {{getName()}}</h3>
+  <p>UID: {{getID()}}</p>
+  <p>email: {{getEmail()}}</p>
+  <ul>
+    <li *ngFor="let stock of getUserStocks() | async">
+      {{ stock.name }}
+    </li>
+  </ul>
 </div>
-
-<ng-template #authenticated>
-  <div *ngIf="authService.user | async as user">
-    <h3>Hi, {{user.displayName}}</h3>
-    <p>UID: {{user.uid}}</p>
-    <p>email: {{user.email}}</p>
-    <ul>
-      <li *ngFor="let stock of getUserStocks() | async">
-        {{ stock.name }}
-      </li>
-    </ul>
-  </div>
-</ng-template>
 
 <input type="text" [(ngModel)]="title" name="title" placeholder="Title..">
 <input type="submit" value="Add a Post" (click)="addFave(title)">

@@ -1,7 +1,7 @@
 import {AppRoutingModule} from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { GlobalHeaderComponent } from './global-header/global-header.component';
@@ -9,13 +9,10 @@ import { GlobalHeaderComponent } from './global-header/global-header.component';
 import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AppComponent} from './app.component';
 import {AuthService} from './auth.service';
-import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
-import {EmailComponent} from './email/email.component';
-import {ProfileComponent} from './profile/profile.component';
 import { NewsfeedPageComponent } from './newsfeed-page/newsfeed-page.component';
 import { StocksPageComponent } from './stocks-page/stocks-page.component';
 import { MypageComponent } from './mypage/mypage.component';
@@ -46,7 +43,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
 import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
-import { FirestoreComponent } from './firestore/firestore.component';
+// import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
@@ -63,10 +60,7 @@ const firebaseConfig = {
     AppComponent,
     LoginModalComponent,
     GlobalHeaderComponent,
-    LoginComponent,
     SignupComponent,
-    EmailComponent,
-    ProfileComponent,
     NewsfeedPageComponent,
     StocksPageComponent,
     MypageComponent,
@@ -80,7 +74,7 @@ const firebaseConfig = {
     AboutPageComponent,
     GlossaryPageComponent,
     TutorialPageComponent,
-    FirestoreComponent
+    // FirestoreComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +91,8 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
 
   ],
   exports: [
@@ -107,7 +102,7 @@ const firebaseConfig = {
     MatButtonModule,
     MatMenuModule
   ],
-  providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService],
+  providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService, LoginModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import {DatabaseService} from '../database.service';
+// import {DatabaseService} from '../database.service';
 
 
 
@@ -12,20 +11,31 @@ import {DatabaseService} from '../database.service';
 })
 export class MypageComponent implements OnInit {
 
-  constructor(private authService: AuthService, private db: DatabaseService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {}
-
-  signOut() {
-    this.authService.logout();
-  }
 
   addFave(name) {
     this.authService.addStockToFave(name);
   }
 
+  getEmail() {
+    return this.authService.getEmail();
+  }
+
+  getName() {
+    return this.authService.getName();
+  }
+
+  getID() {
+    return this.authService.getID();
+  }
+
   getUserStocks() {
-    console.log(this.authService.getUserStocks()[0]);
     return this.authService.getUserStocks();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 }

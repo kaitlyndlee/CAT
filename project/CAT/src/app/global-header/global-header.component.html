@@ -34,15 +34,13 @@
         <div *ngIf="!isLoggedIn()" class="btn navbar-btn ml-2 text-white" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-user-circle-o" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"></i> Sign in
         </div>
         <div *ngIf="isLoggedIn()">
-          <div *ngIf="authService.user | async as user">
-            <div class="dropdown">
-              <button class="dropdown-toggle text-white" style="outline: none;border: none;background-color: transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Welcome
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a style="text-decoration: none;color: white" href="mypage"><p align="center"> My Page</p></a>
-                <a><button class="btn text-white" (click)="signOut()">Sign Out</button></a>
-              </div>
+          <div class="dropdown">
+            <button class="dropdown-toggle text-white" style="outline: none;border: none;background-color: transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a style="text-decoration: none;color: white" href="mypage"><p align="center"> My Page</p></a>
+              <a><button class="btn text-white" (click)="signOut()">Sign Out</button></a>
             </div>
           </div>
         </div>

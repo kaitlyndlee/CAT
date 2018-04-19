@@ -18,6 +18,11 @@ export class Stock {
     this.update();
   }
 
+  isDailyLoaded() : boolean {
+
+    return this.dailyLoaded;
+  }
+
   getDaily() : StockData[] {
     return this.daily;
   }
