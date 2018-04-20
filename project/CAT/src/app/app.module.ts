@@ -78,7 +78,7 @@ messagingSenderId: "233921961729"
     HomepageComponent,
     AboutPageComponent,
     GlossaryPageComponent,
-    TutorialPageComponent
+    TutorialPageComponent,
   ],
   imports: [
     BrowserModule,
