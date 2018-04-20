@@ -79,7 +79,7 @@ messagingSenderId: "233921961729"
     AboutPageComponent,
     GlossaryPageComponent,
     TutorialPageComponent,
-     // FirestoreComponent
+    // FirestoreComponent
   ],
   imports: [
     BrowserModule,
