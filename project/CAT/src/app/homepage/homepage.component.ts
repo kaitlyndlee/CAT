@@ -12,4 +12,11 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToTop() {
+    const x = document.querySelector('#top');
+    if (x) {
+      x.scrollIntoView();
+    }
+  }
+
 }

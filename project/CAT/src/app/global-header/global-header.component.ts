@@ -22,5 +22,10 @@ export class GlobalHeaderComponent implements OnInit {
     return this.authService.isLoggedIn();
   }
 
+  getName() {
+    return this.authService.getName();
+
+  }
+
 }
 

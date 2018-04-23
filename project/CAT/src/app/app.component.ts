@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {KeywordReaderComponent} from "./keyword-reader/keyword-reader.component";
+import {Router} from '@angular/router';
 import {StockMarketModel} from "./stock-market.model";
 import {AuthService} from './auth.service';
 // import {DatabaseService} from './database.service';
