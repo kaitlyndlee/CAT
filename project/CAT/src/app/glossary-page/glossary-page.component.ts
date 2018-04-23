@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlossaryPageComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {}
+
+  // onClick() {
+  //   let x = document.querySelector("#Z");
+  //   if (x) {
+  //     x.scrollIntoView();
+  //
+  //   }
+  // }
 }

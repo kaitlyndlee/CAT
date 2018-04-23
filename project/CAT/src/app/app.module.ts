@@ -1,6 +1,6 @@
 import {AppRoutingModule} from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { LoginModalComponent } from './login-modal/login-modal.component';
@@ -43,6 +43,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
 import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
+import {Router, RouterModule} from '@angular/router';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -92,6 +93,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    RouterModule
 
 
   ],
@@ -102,6 +104,7 @@ const firebaseConfig = {
     MatButtonModule,
     MatMenuModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService, LoginModalComponent],
   bootstrap: [AppComponent]
 })

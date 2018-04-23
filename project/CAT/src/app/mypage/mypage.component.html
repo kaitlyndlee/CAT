@@ -1,23 +1,24 @@
 <app-login-modal></app-login-modal>
 
-<div *ngIf="authService.user | async as user">
-  <h3>Hi, {{getName()}}</h3>
-  <p>UID: {{getID()}}</p>
-  <p>email: {{getEmail()}}</p>
-  <ul>
-    <li *ngFor="let stock of getUserStocks() | async">
-      {{ stock.name }}
-    </li>
-  </ul>
-</div>
 
-<input type="text" [(ngModel)]="title" name="title" placeholder="Title..">
-<input type="submit" value="Add a Post" (click)="addFave(title)">
+
+<!--<input type="text" [(ngModel)]="title" name="title" placeholder="Title..">-->
+<!--<input type="submit" value="Add a Favorite" (click)="addFave(title)">-->
 
 <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <div *ngIf="authService.user | async as user">
+            <h3>Hi, {{getName()}}</h3>
+            <!--<p>UID: {{getID()}}</p>-->
+            <!--<p>email: {{getEmail()}}</p>-->
+            <!--<ul>-->
+            <!--<li *ngFor="let stock of getUserStocks() | async">-->
+            <!--{{ stock.name }}-->
+            <!--</li>-->
+            <!--</ul>-->
+          </div>
           <div class="btn-group">
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Action</a>
@@ -235,3 +236,21 @@
       </div>
     </div>
   </div>
+
+<div class="text-center text-white py-5" style="background-color: cadetblue">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4">We ♥ new friends</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <a href="https://www.facebook.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-facebook fa-3x mx-3"></i></a>
+        <a href="https://twitter.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-twitter fa-3x mx-3"></i></a>
+        <a href="https://plus.google.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-3x fa-google-plus mx-3"></i></a>
+        <a href="https://www.instagram.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-instagram fa-3x mx-3"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
