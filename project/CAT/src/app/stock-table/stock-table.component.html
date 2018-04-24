@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="getStockMarket()">
+    <br>
+    <table class="table table-striped table-bordered" id="example">
+      <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Sector</th>
+        <th>Industry</th>
+        <th>Market Cap</th>
+        <th>Summary Quote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let market of getStockMarket()" style="cursor: pointer" (click)="selectCompany(market)">
+        <td>{{market.symbol}}</td>
+        <td>{{market.name}}</td>
+        <td>{{market.sector}}</td>
+        <td>{{market.industry}}</td>
+        <td>{{market.marketCap}}</td>
+        <td>{{market.summaryQuote}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
