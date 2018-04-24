@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {KeywordReaderComponent} from "./keyword-reader/keyword-reader.component";
+import {KeywordReaderComponent} from './keyword-reader/keyword-reader.component';
 import {Router} from '@angular/router';
-import {StockMarketModel} from "./stock-market.model";
+import {StockMarketModel} from './stock-market.model';
 import {AuthService} from './auth.service';
+import {StockMarketService} from './stock-market.service';
 // import {DatabaseService} from './database.service';
 
 @Component({
@@ -12,10 +13,9 @@ import {AuthService} from './auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private jsonreader: KeywordReaderComponent, private  authService: AuthService) {
+  constructor(private jsonreader: KeywordReaderComponent, private  stockMarket: StockMarketService) {
 
   }
   ngOnInit(): void {
-
   }
 }
