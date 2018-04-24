@@ -14,6 +14,7 @@ interface User {
 
 interface Stock {
   ticker: string;
+  name:   string;
 }
 
 @Injectable()
@@ -115,13 +116,15 @@ export class AuthService {
     return this.authState !== null;
   }
 
-  addStockToFave(ticker) {
+  addStockToFave(stock) {
+
     // Create a path in Firestore to add our new stock
     const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
 
     // Create the Stock object to add to Firestore
     const newStock: Stock = {
-      ticker: ticker,
+      ticker: stock.ticker,
+      name  : stock.name
     };
 
     // Set the data in Firestore
