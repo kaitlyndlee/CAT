@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Stock} from '../Stock.model';
 import {StockMarketModel} from '../stock-market.model';
+import {StockMarketService} from '../stock-market.service';
 // import {DatabaseService} from '../database.service';
 
 @Component({
@@ -12,14 +13,15 @@ import {StockMarketModel} from '../stock-market.model';
 
 
 export class StocksPageComponent implements OnInit {
+  constructor(private stockMarket: StockMarketService) {}
 
-  stockMarket: StockMarketModel;
-  constructor() {
+  ngOnInit() {}
 
+  getStockArray() {
+    return this.stockMarket.getStockArray();
   }
 
-  ngOnInit() {
-    this.stockMarket = new StockMarketModel();
+  getStockMarket() {
+    return this.stockMarket.getStockMarket();
   }
-
 }

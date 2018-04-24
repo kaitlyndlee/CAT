@@ -1,4 +1,4 @@
-import {CompanyModel} from "./company.model";
+import {CompanyModel} from './company.model';
 
 import * as amexData   from '../assets/companylist/companylist-AMEX.json';
 import * as nyseData   from '../assets/companylist/companylist-NYSE.json';
