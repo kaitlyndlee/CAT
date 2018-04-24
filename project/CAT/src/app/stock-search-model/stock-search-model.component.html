@@ -1,0 +1,14 @@
+<input type="text" id="myInput" (keyup)="filterSearch()" placeholder="Search for names.."><i id="icon" class="fa fa-search" style="cursor:default;"></i>
+
+<ul id="myUL" *ngIf="stockMarket">
+  <li *ngFor="let market of stockMarket.getCollectiveMarket()" style="display: none; cursor: pointer; position: relative; z-index: 5;"><a>{{market.name}}</a></li>
+  <!--<li><a href="#">Adele</a></li>-->
+  <!--<li><a href="#">Agnes</a></li>-->
+
+  <!--<li><a href="#">Billy</a></li>-->
+  <!--<li><a href="#">Bob</a></li>-->
+
+  <!--<li><a href="#">Calvin</a></li>-->
+  <!--<li><a href="#">Christina</a></li>-->
+  <!--<li><a href="#">Cindy</a></li>-->
+</ul>
