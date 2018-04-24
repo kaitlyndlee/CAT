@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c40a3201-5f3d-4e4e-819a-19df49d0d39a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock-search-model.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stock-search-model.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="162" selection-start-line="3" selection-start-column="162" selection-end-line="3" selection-end-column="162" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock-search-model.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stock-search-model.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="170">
+              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -96,10 +96,10 @@
         <option value="$PROJECT_DIR$/project/CAT/node_modules/require_optional/node_modules/resolve-from/index.js" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stock-market.model.ts" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.ts" />
-        <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.css" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.html" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" />
+        <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts" />
       </list>
     </option>
   </component>
@@ -215,12 +215,12 @@
       <updated>1522124672729</updated>
       <workItem from="1522124677971" duration="240000" />
       <workItem from="1524535015568" duration="683000" />
-      <workItem from="1524536843766" duration="4840000" />
+      <workItem from="1524536843766" duration="4887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5763000" />
+    <option name="totallyTimeSpent" value="5810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -351,16 +351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -370,11 +360,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="162" selection-start-line="3" selection-start-column="162" selection-end-line="3" selection-end-column="162" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>

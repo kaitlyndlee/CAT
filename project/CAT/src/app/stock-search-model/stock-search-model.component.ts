@@ -9,7 +9,6 @@ import {StockMarketModel} from "../stock-market.model";
 export class StockSearchModelComponent implements OnInit {
 
   @Input() stockMarket: StockMarketModel;
-filter:string = "";
   constructor() { }
 
 
@@ -19,7 +18,6 @@ filter:string = "";
       let input, filter, ul, li, a, i;
       input = document.getElementById('myInput');
       filter = input.value.toUpperCase();
-      this.filter = filter;
       ul = document.getElementById("myUL");
 
       li = ul.getElementsByTagName('li');
