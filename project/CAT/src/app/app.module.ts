@@ -45,6 +45,9 @@ import { GlossaryPageComponent } from './glossary-page/glossary-page.component';
 import { TutorialPageComponent } from './tutorial-page/tutorial-page.component';
 import {Router, RouterModule} from '@angular/router';
 import { StockSearchModelComponent } from './stock-search-model/stock-search-model.component';
+import { NewsListComponent } from './news-list/news-list.component';
+import { StockCardComponent } from './stock-card/stock-card.component';
+import { ExchangeListComponent } from './exchange-list/exchange-list.component';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -76,6 +79,9 @@ const firebaseConfig = {
     GlossaryPageComponent,
     TutorialPageComponent,
     StockSearchModelComponent,
+    NewsListComponent,
+    StockCardComponent,
+    ExchangeListComponent,
     // FirestoreComponent
   ],
   imports: [

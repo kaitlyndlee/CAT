@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CompanyModel} from "../company.model";
+import {StocksPageComponent} from "../stocks-page/stocks-page.component";
+import {StockMarketService} from "../stock-market.service";
 
 @Component({
   selector: 'app-stock-table',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stockService: StockMarketService) { }
 
   ngOnInit() {
+
+  }
+
+  getStockMarket(): CompanyModel[] {
+    return this.stockService.getStockArray();
+  }
+
+  selectCompany(company: CompanyModel) {
+    StocksPageComponent.selectedCompany = company;
   }
 
 }

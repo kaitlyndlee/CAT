@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import {CompanyModel} from "./company.model";
 
 interface User {
   uid: string;
@@ -14,6 +15,7 @@ interface User {
 
 interface Stock {
   ticker: string;
+  name:   string;
 }
 
 @Injectable()
@@ -115,13 +117,14 @@ export class AuthService {
     return this.authState !== null;
   }
 
-  addStockToFave(ticker) {
+  addStockToFave(company: CompanyModel) {
     // Create a path in Firestore to add our new stock
     const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
 
     // Create the Stock object to add to Firestore
     const newStock: Stock = {
-      ticker: ticker,
+      ticker: company.symbol,
+      name  : company.name
     };
 
     // Set the data in Firestore
