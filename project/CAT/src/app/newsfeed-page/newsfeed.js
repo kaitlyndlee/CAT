@@ -6,7 +6,7 @@ function setSource(sourcesite)
   var apiKey = "&apiKey=c23255fc1cf845f4b7b6ecc796c2e6d8";
 
   xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+      if (this.readyState === 4 && this.status === 200) {
         var response = JSON.parse(xhttp.responseText);
         var articles = response.articles;
 
@@ -28,12 +28,12 @@ function setSource(sourcesite)
 function setKeyword()
 {
   var xhttp = new XMLHttpRequest;
-  var baseUrl = "https://newsapi.org/v2/everything?"
+  var baseUrl = "https://newsapi.org/v2/everything?";
   var keyword = document.getElementById("inputBar").value;
   var apiKey = "&apiKey=c23255fc1cf845f4b7b6ecc796c2e6d8";
 
   xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+      if (this.readyState === 4 && this.status === 200) {
         var response = JSON.parse(xhttp.responseText);
         var articles = response.articles;
         console.log(articles.length);
@@ -47,7 +47,7 @@ function setKeyword()
         document.getElementById("news").innerHTML = output;
       }
   };
-  var url = baseUrl + "q=" + keyword + apiKey;
+  var url = baseUrl + "q=" + keyword + " Stock" + apiKey;
   xhttp.open("GET", url, true);
   xhttp.send();
 
