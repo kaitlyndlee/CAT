@@ -12,7 +12,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AppComponent} from './app.component';
 import {AuthService} from './auth.service';
-import {SignupComponent} from './signup/signup.component';
+import {StockMarketService} from './stock-market.service';
 import { NewsfeedPageComponent } from './newsfeed-page/newsfeed-page.component';
 import { StocksPageComponent } from './stocks-page/stocks-page.component';
 import { MypageComponent } from './mypage/mypage.component';
@@ -61,7 +61,6 @@ const firebaseConfig = {
     AppComponent,
     LoginModalComponent,
     GlobalHeaderComponent,
-    SignupComponent,
     NewsfeedPageComponent,
     StocksPageComponent,
     MypageComponent,
@@ -105,7 +104,7 @@ const firebaseConfig = {
     MatMenuModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService, LoginModalComponent],
+  providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService, LoginModalComponent, StockMarketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
