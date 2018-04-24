@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c40a3201-5f3d-4e4e-819a-19df49d0d39a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/CAT/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/CAT/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/CAT/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,8 +31,8 @@
       <file leaf-file-name="stocks-page.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+            <state relative-caret-position="357">
+              <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -43,34 +40,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks-page.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stocks-page.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+            <state relative-caret-position="119">
+              <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock-search-model.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stock-search-model.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="145" selection-start-column="145" selection-end-column="145" />
+            <state relative-caret-position="51">
+              <caret line="3" column="162" selection-start-line="3" selection-start-column="162" selection-end-line="3" selection-end-column="162" />
               <folding>
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/CAT/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="110" column="27" lean-forward="true" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +65,7 @@
       <file leaf-file-name="stock-search-model.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="391">
               <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -112,8 +98,8 @@
         <option value="$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.ts" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.css" />
-        <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" />
         <option value="$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.html" />
+        <option value="$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html" />
       </list>
     </option>
   </component>
@@ -229,12 +215,12 @@
       <updated>1522124672729</updated>
       <workItem from="1522124677971" duration="240000" />
       <workItem from="1524535015568" duration="683000" />
-      <workItem from="1524536843766" duration="4689000" />
+      <workItem from="1524536843766" duration="4840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5612000" />
+    <option name="totallyTimeSpent" value="5763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -330,8 +316,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        <state relative-caret-position="357">
+          <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>
@@ -348,37 +334,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="145" selection-start-column="145" selection-end-column="145" />
-          <folding>
-            <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/CAT/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="110" column="27" lean-forward="true" selection-start-line="110" selection-start-column="27" selection-end-line="110" selection-end-column="27" />
+          <caret line="109" column="27" lean-forward="true" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
@@ -387,8 +346,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stocks-page/stocks-page.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="119">
+          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/CAT/src/app/stock-search-model/stock-search-model.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="162" selection-start-line="3" selection-start-column="162" selection-end-line="3" selection-end-column="162" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
