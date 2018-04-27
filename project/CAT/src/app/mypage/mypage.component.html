@@ -13,244 +13,30 @@
             <h3>Hi, {{getName()}}</h3>
             <!--<p>UID: {{getID()}}</p>-->
             <!--<p>email: {{getEmail()}}</p>-->
-            <!--<ul>-->
-            <!--<li *ngFor="let stock of getUserStocks() | async">-->
-            <!--{{ stock.name }}-->
-            <!--</li>-->
-            <!--</ul>-->
+            <ul>
+            <li *ngFor="let stock of getUserStocks() | async">
+              <a class="nav-link" routerLink="/stocks"><i class="fa d-inline fa-lg"></i> {{ stock.name }}</a>
+                <!--<a style="text-decoration: none;color: black" routerLink="stocks">{{ stock.name }}</a>-->
+            </li>
+            </ul>
           </div>
-          <div class="btn-group">
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-          </div>
-          <form class="form-inline">
-            <div class="input-group">
-              <input type="email" class="form-control" placeholder="Search stock">
-              <div class="input-group-append">
-                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Stock Name</th>
-                <th>Margin</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Apple</td>
-                <td>+ 15%
-                  <br> </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Samsung</td>
-                <td>- 39.5%
-                  <br> </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Google</td>
-                <td>+ 14.6%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header"> Header </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <h4>APPLE INC </h4>
-                </div>
-                <div class="col-md-1">
-                  <a href="#" class="btn btn-outline-primary">Set Alert
-                    <br> </a>
-                </div>
-                <div class="col-md-2">
-                  <a href="#" class="btn btn-outline-primary">Add Watchlist
-                    <br> </a>
-                </div>
-                <div class="col-md-1">
-                  <a href="#" class="btn btn-outline-primary">Add Note
-                    <br> </a>
-                </div>
-              </div>
-              <h6 class="text-muted">[AAPL] Information Technology | Very Large Cap ($757.28B | Common Stock</h6>
-              <div class="row">
-                <div class="col-md-4">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Day Range
-                          <br> </th>
-                        <th>Price
-                          <br> </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>52-Week Range
-                          <br> </td>
-                        <td>+ 15%
-                          <br> </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Previous Close</td>
-                        <td>$156.43</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Bix X Size
-                          <br>
-                          <br> </td>
-                        <td>$167.80 x 3</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-4">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-4">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="card">
-                    <div class="card-header"> Price
-                      <br> </div>
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <h4>Apple Inc
-                            <br> </h4>
-                        </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-primary bg-gradient" href="#">1 Month</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-primary" href="#">3 Month
-                              <br> </a>
-                        </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-primary" href="#">12 Month
-                              <br> </a>
-                        </div>
-                      </div>
-                      <h6 class="text-muted">Displaying 30 day usage
-                        <br> </h6>
-                      <img class="img-fluid d-block" src="../../assets/apple-stocks.png" style="Width:100%"> </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <div class="card-header"> News
-                      <br> </div>
-                  </div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">US STOCKS - Wall st [...]
-                          <br> </h5> <small>3 days ago</small> </div>
-                      <p class="mb-1">The united states decided Apple is unamerican and are kicking them out.</p> <small>Article Weight: -12.5</small> </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Apple declares Bankruptcy
-                          <br> </h5> <small class="text-muted">3 days ago</small> </div>
-                      <p class="mb-1">Just in that Apple has gone Bankrupt. They are liquidating all stores by 2020 [...]</p> <small class="text-muted">Article Weight: -49&nbsp;<br></small> </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <!--<div class="btn-group">-->
+            <!--<div class="dropdown-menu">-->
+              <!--<a class="dropdown-item" href="#">Action</a>-->
+              <!--<div class="dropdown-divider"></div>-->
+              <!--<a class="dropdown-item" href="#">Separated link</a>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<form class="form-inline">-->
+            <!--<div class="input-group">-->
+              <!--<input type="email" class="form-control" placeholder="Search stock">-->
+              <!--<div class="input-group-append">-->
+                <!--<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</form>-->
 
-<div class="text-center text-white py-5" style="background-color: cadetblue">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="display-4">We ♥ new friends</h1>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <a href="https://www.facebook.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-facebook fa-3x mx-3"></i></a>
-        <a href="https://twitter.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-twitter fa-3x mx-3"></i></a>
-        <a href="https://plus.google.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-3x fa-google-plus mx-3"></i></a>
-        <a href="https://www.instagram.com/" class="text-white" target="_blank"><i class="fa fa-fw fa-instagram fa-3x mx-3"></i></a>
-      </div>
-    </div>
-  </div>
 </div>

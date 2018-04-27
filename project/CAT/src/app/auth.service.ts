@@ -20,13 +20,13 @@ interface Stock {
 
 @Injectable()
 export class AuthService {
-  public user: Observable<User>;
-  private stockCollection: AngularFirestoreCollection<Stock>;
-  private stocks: Observable<Stock[]>;
-  private authState: any;
-  private userID: string;
-  private displayName: string;
-  private email: string;
+   user: Observable<User>;
+   stockCollection: AngularFirestoreCollection<Stock>;
+   stocks: Observable<Stock[]>;
+   authState: any;
+   userID: string;
+   displayName: string;
+   email: string;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -43,6 +43,7 @@ export class AuthService {
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
           this.stocks = this.stockCollection.valueChanges();
           this.userID = user.uid;
+          // console.log(this.userID);
           this.displayName =  user.displayName;
           this.email = user.email;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -52,27 +53,27 @@ export class AuthService {
       });
   }
 
-    login(email: string, password: string) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Nice, it worked!');
-        this.router.navigateByUrl('/profile');
-      })
-      .catch(err => {
-        console.log('Something went wrong: ', err.message);
-      });
-  }
-
-  emailSignup(email: string, password: string) {
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Success', value);
-        this.router.navigateByUrl('/profile');
-      })
-      .catch(error => {
-        console.log('Something went wrong: ', error);
-      });
-  }
+  //   login(email: string, password: string) {
+  //   this.afAuth.auth.signInWithEmailAndPassword(email, password)
+  //     .then(value => {
+  //       console.log('Nice, it worked!');
+  //       this.router.navigateByUrl('/profile');
+  //     })
+  //     .catch(err => {
+  //       console.log('Something went wrong: ', err.message);
+  //     });
+  // }
+  //
+  // emailSignup(email: string, password: string) {
+  //   this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+  //     .then(value => {
+  //       console.log('Success', value);
+  //       this.router.navigateByUrl('/profile');
+  //     })
+  //     .catch(error => {
+  //       console.log('Something went wrong: ', error);
+  //     });
+  // }
 
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -92,6 +93,7 @@ export class AuthService {
       }
     });
   }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
@@ -119,12 +121,14 @@ export class AuthService {
 
   addStockToFave(company: CompanyModel) {
     // Create a path in Firestore to add our new stock
+    const name = company.name;
+    const ticker = company.symbol;
     const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
 
     // Create the Stock object to add to Firestore
     const newStock: Stock = {
-      ticker: company.symbol,
-      name  : company.name
+      ticker: ticker,
+      name  : name
     };
 
     // Set the data in Firestore

@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>Display Soucres</title>
-</head>
-
-<body>
   <h1> Latest News </h1>
   <button type = "button" onclick=setSource("fortune")> Fortune </button>
   <button type = "button" onclick=setSource("the-economist")> The Economist </button>
   <button type = "button" onclick=setSource("business-insider")> Business Insider </button>
   <ul id = "news"></ul>
+  <!--<input type="text" [(ngModel)]="title" name="title" placeholder="Title..">-->
+  <!--<input type="submit" value="Search" (click)="setKeyword()">-->
   <input type = "search" id = "inputBar" onsearch = "setKeyword()">
   <script src="newsfeed.js"></script>
   <br>
-  <a href = "https://newsapi.org">Powered by NewsAPI </a>
-</body>
 
-</html>

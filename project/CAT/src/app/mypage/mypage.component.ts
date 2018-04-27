@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import {StocksPageComponent} from '../stocks-page/stocks-page.component';
+import {CompanyModel} from '../company.model';
 // import {DatabaseService} from '../database.service';
 
 
@@ -37,5 +39,9 @@ export class MypageComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  selectCompany(company: CompanyModel) {
+    StocksPageComponent.selectedCompany = company;
   }
 }

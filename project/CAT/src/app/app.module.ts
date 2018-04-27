@@ -54,12 +54,12 @@ import { StockListComponent } from './stock-list/stock-list.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
 const firebaseConfig = {
-  apiKey: "AIzaSyCUFrGrIA6cc8QaKxhEJEcElxAIr0uJ4ns",
-  authDomain: "fir-2fbf6.firebaseapp.com",
-  databaseURL: "https://fir-2fbf6.firebaseio.com",
-  projectId: "fir-2fbf6",
-  storageBucket: "fir-2fbf6.appspot.com",
-  messagingSenderId: "487575271832"
+  apiKey: "AIzaSyBkq9oGeeW730FonqTZPBs_g_RJKUEow8U",
+  authDomain: "capitalactivitytracker-c9faf.firebaseapp.com",
+  databaseURL: "https://capitalactivitytracker-c9faf.firebaseio.com",
+  projectId: "capitalactivitytracker-c9faf",
+  storageBucket: "capitalactivitytracker-c9faf.appspot.com",
+  messagingSenderId: "65930208508"
 };
 
 @NgModule({
