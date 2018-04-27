@@ -1,0 +1,5 @@
+<a style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{company.name}}
+      <br> </h5> <small class="text-success">+ {{company.stock.getDaily()[0].getPercent()}}% ({{company.stock.getDaily()[0].open}})</small> </div> <small>({{company.symbol}}) | {{company.stock.getDaily()[0].timestamp}}</small>
+</a>

@@ -1,7 +1,15 @@
 import {AlphaVantageAPI} from "alpha-vantage-cli";
 
 var ALPHA_VANTAGE_KEY = '1I4DFBMCFGHXCYBI';
-var av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
+import { IEXClient } from 'iex-api'
+import * as _fetch from 'isomorphic-fetch'
+import {ChartRangeOption} from "iex-api/apis/stocks";
+
+const iex = new IEXClient(_fetch)
+
+
+
+// var av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
 
 export class Stock {
 
@@ -10,6 +18,7 @@ export class Stock {
   intraLoaded : boolean;
   daily       : StockData[] = [];
   intraday    : StockData[] = [];
+  static av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
 
   constructor(private stockSymbol: string) {
     this.interval    = "15";
@@ -44,25 +53,55 @@ export class Stock {
     this.grabIntradayData();
   }
 
-  private grabDaily() {
-    this.dailyLoaded = false;
-    av.getDailyData(this.stockSymbol).then(dailyData => {
+  // private grabDaily() {
+  //   this.dailyLoaded = false;
+  //   Stock.av.getDailyData(this.stockSymbol).then(dailyData => {
+  //
+  //     let i;
+  //     this.daily = [];
+  //     for (i = 0; i < dailyData.length; i++) {
+  //       this.daily.push(new StockData(dailyData[i]));
+  //     }
+  //     this.dailyLoaded = true;
+  //   })
+  //     .catch(err => {
+  //       console.error(err);
+  //     });
+  // }
 
-      let i;
-      this.daily = [];
-      for (i = 0; i < dailyData.length; i++) {
-        this.daily.push(new StockData(dailyData[i]));
-      }
-      this.dailyLoaded = true;
-    })
-      .catch(err => {
-        console.error(err);
+  private grabDaily() {
+
+      this.dailyLoaded = false;
+      iex.stockNews(this.stockSymbol).then(daily=> {
+        console.log(daily);
       });
+
+
+      iex.stockFinancials(this.stockSymbol).then(data => {
+        console.log(data.financials);
+      });
+
+      iex.stockCompany(this.stockSymbol).then(daily => {
+        console.log(daily)
+
+        let i;
+        let temp = [];
+        for (i = 0; i < daily.exchange.length; i++) {
+          temp.push(new StockData(daily[i]));
+          console.log(daily.exchange)
+        }
+        this.dailyLoaded = true;
+        this.daily = temp;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+
   }
 
   private grabIntradayData() {
     this.intraLoaded = false;
-    av.getIntradayData(this.stockSymbol, this.interval).then(intradayData => {
+    Stock.av.getIntradayData(this.stockSymbol, this.interval).then(intradayData => {
 
         let i;
         this.intraday = [];
@@ -77,7 +116,7 @@ export class Stock {
   }
 
   update() {
-    this.grabDaily();
+    // this.grabDaily();
     // this.grabIntradayData();
   }
 }

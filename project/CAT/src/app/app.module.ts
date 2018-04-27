@@ -48,6 +48,8 @@ import { StockSearchModelComponent } from './stock-search-model/stock-search-mod
 import { NewsListComponent } from './news-list/news-list.component';
 import { StockCardComponent } from './stock-card/stock-card.component';
 import { ExchangeListComponent } from './exchange-list/exchange-list.component';
+import { StocklistItemComponent } from './stocklist-item/stocklist-item.component';
+import { StockListComponent } from './stock-list/stock-list.component';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -82,6 +84,8 @@ const firebaseConfig = {
     NewsListComponent,
     StockCardComponent,
     ExchangeListComponent,
+    StocklistItemComponent,
+    StockListComponent,
     // FirestoreComponent
   ],
   imports: [

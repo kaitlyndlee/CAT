@@ -6,62 +6,65 @@ import * as nasdaqData from '../assets/companylist/companylist-NASDAQ.json';
 
 export class StockMarketModel {
 
-  amexExchange   : CompanyModel[] = [];
-  nyseExchange   : CompanyModel[] = [];
-  nasdaqExchange : CompanyModel[] = [];
+  static amexExchange   : CompanyModel[] = StockMarketModel.grabAmexExchange();
+  static nyseExchange   : CompanyModel[] = StockMarketModel.grabNyseExchange();
+  static nasdaqExchange : CompanyModel[] = StockMarketModel.grabNasdaqExchange();
 
   exampleCompany : CompanyModel;
   isLoaded : boolean;
 
   constructor() {
-    this.update();
-    this.exampleCompany = this.amexExchange[0];
+    // this.update();
+    this.exampleCompany = StockMarketModel.amexExchange[0];
     this.isLoaded = false;
   }
 
   getCollectiveMarket() {
-    return this.amexExchange.concat(this.nyseExchange).concat(this.nasdaqExchange);
+    return StockMarketModel.amexExchange.concat(StockMarketModel.nyseExchange).concat(StockMarketModel.nasdaqExchange);
   }
 
   getAmexExchange() {
-    return this.amexExchange;
+    return StockMarketModel.amexExchange;
   }
 
   getNyseExchange() {
-    return this.nyseExchange;
+    return StockMarketModel.nyseExchange;
   }
 
   getNasdaqExchange() {
-    return this.nasdaqExchange;
+    return StockMarketModel.nasdaqExchange;
   }
 
-  private grabAmexExchange() {
+  static grabAmexExchange() : CompanyModel[] {
     let temp = [];
     for (let i = 0; i < 1; i++) {
       temp.push(new CompanyModel(amexData[i]))
     }
-    this.amexExchange = temp;
+    return temp;
+    // this.amexExchange = temp;
   }
 
-  private grabNyseExchange() {
+  static grabNyseExchange() : CompanyModel[] {
     let temp = [];
     for (let i = 0; i < 1; i++) {
       temp.push(new CompanyModel(nyseData[i]))
     }
-    this.nyseExchange = temp;
+    return temp;
+    // this.nyseExchange = temp;
   }
 
-  private grabNasdaqExchange() {
+  static grabNasdaqExchange() : CompanyModel[] {
     let temp = [];
     for (let i = 0; i < 1; i++) {
       temp.push(new CompanyModel(nasdaqData[i]))
     }
-    this.nasdaqExchange = temp;
+    return temp;
+    // this.nasdaqExchange = temp;
   }
 
   update() {
-    this.grabAmexExchange();
-    this.grabNasdaqExchange();
-    this.grabNyseExchange();
+    StockMarketModel.grabAmexExchange();
+    StockMarketModel.grabNasdaqExchange();
+    StockMarketModel.grabNyseExchange();
   }
 }
