@@ -17,8 +17,9 @@ import {CompanyModel} from "../company.model";
 export class StocksPageComponent implements OnInit {
 
   static selectedCompany: CompanyModel;
-
+  static stockArray : CompanyModel[];
   constructor(private stockMarket: StockMarketService, private authService: AuthService) {
+    StocksPageComponent.stockArray = stockMarket.getStockArray();
     StocksPageComponent.selectedCompany = stockMarket.getStockArray()[0];
   }
 
@@ -28,6 +29,19 @@ export class StocksPageComponent implements OnInit {
     return StocksPageComponent.selectedCompany;
   }
 
+  static selectStockByTicker(ticker: string) {
+    console.log("Ticker: " + ticker);
+    console.log(StocksPageComponent.stockArray);
+    for (let item of StocksPageComponent.stockArray) {
+      console.log("Checking item: ");
+      console.log(item);
+      if (item.symbol == ticker) {
+
+        StocksPageComponent.selectedCompany = item;
+        break;
+      }
+    }
+  }
   getStockArray() {
     return this.stockMarket.getStockArray();
   }
