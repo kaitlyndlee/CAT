@@ -50,6 +50,7 @@ import { ExchangeListComponent } from './exchange-list/exchange-list.component';
 import { StocklistItemComponent } from './stocklist-item/stocklist-item.component';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
+import { NewsCardComponent } from './news-card/news-card.component';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -86,6 +87,7 @@ const firebaseConfig = {
     StocklistItemComponent,
     StockListComponent,
     StockChartComponent,
+    NewsCardComponent,
     // FirestoreComponent
   ],
   imports: [

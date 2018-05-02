@@ -21,6 +21,11 @@ export class MypageComponent implements OnInit {
     this.authService.addStockToFave(name);
   }
 
+  selectStock(ticker: string) {
+    // console.log(ticker);
+    StocksPageComponent.selectStockByTicker(ticker);
+  }
+
   getEmail() {
     return this.authService.getEmail();
   }

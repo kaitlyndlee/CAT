@@ -16,7 +16,7 @@ interface User {
 }
 
 interface Stock {
-  ticker: string;
+  symbol: string;
   name:   string;
 }
 
@@ -55,11 +55,11 @@ export class AuthService {
 
 
           this.userID = user.uid;
-          // console.log(this.userID);
           this.displayName =  user.displayName;
           this.email = user.email;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
+        }
+        else {
           return Observable.of(null);
         }
       });
@@ -134,12 +134,12 @@ export class AuthService {
   addStockToFave(company: CompanyModel) {
     // Create a path in Firestore to add our new stock
     const name = company.name;
-    const ticker = company.symbol;
+    const symbol = company.symbol;
     const stockRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userID}/stocks/${name}`);
 
     // Create the Stock object to add to Firestore
     const newStock: Stock = {
-      ticker: ticker,
+      symbol: symbol,
       name  : name
     };
 

@@ -26,6 +26,7 @@ export class StocksPageComponent implements OnInit {
 
   getSelectedCompany() : CompanyModel {
     return StockMarketService.selectedCompany;
+
   }
 
   getCompanies() : CompanyModel[] {

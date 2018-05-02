@@ -11,17 +11,20 @@
         <div class="col-md-12">
           <div *ngIf="authService.user | async as user">
             <h3>Hi, {{getName()}}</h3>
-            <!--<p>UID: {{getID()}}</p>-->
-            <!--<p>email: {{getEmail()}}</p>-->
-            <!--<ul>-->
-              <app-stock-list [companyList]="getUserStocks() | async"></app-stock-list>
-            <!--<li *ngFor="let stock of getUserStocks() | async">-->
-              <!--<a class="nav-link" routerLink="/stocks"><i class="fa d-inline fa-lg"></i> {{ stock.name }}</a>-->
-                <!--&lt;!&ndash;<a style="text-decoration: none;color: black" routerLink="stocks">{{ stock.name }}</a>&ndash;&gt;-->
-            <!--</li>-->
-            <!--</ul>-->
-          </div>
 
+            <hr style="background-color: gray; height: .2px">
+            <ul>
+            <li *ngFor="let stock of getUserStocks() | async" (click)="selectStock(stock.ticker)">
+              <a style="cursor: pointer">{{ stock.name }}</a>
+            </li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-10">
+            <app-stock-card></app-stock-card>
+          </div>
         </div>
       </div>
     </div>
