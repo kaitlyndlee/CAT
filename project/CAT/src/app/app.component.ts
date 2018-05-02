@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {KeywordReaderComponent} from './keyword-reader/keyword-reader.component';
 import {Router} from '@angular/router';
 import {StockMarketModel} from './stock-market.model';
 import {AuthService} from './auth.service';
@@ -13,7 +12,7 @@ import {StockMarketService} from './stock-market.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private jsonreader: KeywordReaderComponent, private  stockMarket: StockMarketService) {
+  constructor(private  stockMarket: StockMarketService) {
 
   }
   ngOnInit(): void {

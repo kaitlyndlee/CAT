@@ -1,3 +1,16 @@
-<h4 style="padding: 56px 0px 0px 0px" align="center" >Newsfeed</h4>
-<hr style="width: 100%; height: .2px; background-color:cadetblue;">
-<app-news-card></app-news-card>
+<div class="row">
+  <div class="col-md-12">
+    <h4>Relevant News...</h4>
+    <div class="list-group fade-in" [ngClass]="{'d-inline-flex flex-row' : isHorizontal()}">
+      <a *ngFor="let article of newsList" href="{{article.url}}" target="_blank" class="fade-in list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer">
+        <small style="float: right;">{{getDayDifference(article.datetime)}}</small>
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{article.headline}}</h5>
+        </div>
+        <p class="mb-1">{{article.summary}}</p>
+        <small>{{article.source}}</small>
+      </a>
+    </div>
+  </div>
+</div>

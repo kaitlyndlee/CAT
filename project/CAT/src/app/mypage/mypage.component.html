@@ -11,6 +11,7 @@
         <div class="col-md-12">
           <div *ngIf="authService.user | async as user">
             <h3>Hi, {{getName()}}</h3>
+
             <hr style="background-color: gray; height: .2px">
             <ul>
             <li *ngFor="let stock of getUserStocks() | async" (click)="selectStock(stock.ticker)">

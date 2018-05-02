@@ -6,6 +6,8 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import {CompanyModel} from "./company.model";
+import {StockMarketService} from "./stock-market.service";
+import {async} from "@angular/core/testing";
 
 interface User {
   uid: string;
@@ -27,6 +29,7 @@ export class AuthService {
    userID: string;
    displayName: string;
    email: string;
+   favoritedCompanies : CompanyModel[] = [];
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -42,6 +45,15 @@ export class AuthService {
         if (user) {
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
           this.stocks = this.stockCollection.valueChanges();
+
+          this.stocks.forEach(object => {
+            StockMarketService.createCompanyFromSymbol((<any>object).symbol).then(data => {
+              this.favoritedCompanies.push(new CompanyModel(data));
+            });
+          });
+
+
+
           this.userID = user.uid;
           this.displayName =  user.displayName;
           this.email = user.email;
@@ -148,6 +160,8 @@ export class AuthService {
   }
 
   getUserStocks() {
-    return this.stocks;
+    console.log("Favorited companies");
+    console.log(this.favoritedCompanies);
+    return this.favoritedCompanies;
   }
 }

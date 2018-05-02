@@ -16,7 +16,6 @@ import {StockMarketService} from './stock-market.service';
 import { NewsfeedPageComponent } from './newsfeed-page/newsfeed-page.component';
 import { StocksPageComponent } from './stocks-page/stocks-page.component';
 import { MypageComponent } from './mypage/mypage.component';
-import { KeywordReaderComponent } from './keyword-reader/keyword-reader.component';
 import {JsonReaderService} from "./json-reader.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ViewStockComponent } from './view-stock/view-stock.component';
@@ -48,6 +47,9 @@ import { StockSearchModelComponent } from './stock-search-model/stock-search-mod
 import { NewsListComponent } from './news-list/news-list.component';
 import { StockCardComponent } from './stock-card/stock-card.component';
 import { ExchangeListComponent } from './exchange-list/exchange-list.component';
+import { StocklistItemComponent } from './stocklist-item/stocklist-item.component';
+import { StockListComponent } from './stock-list/stock-list.component';
+import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { NewsCardComponent } from './news-card/news-card.component';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
@@ -69,7 +71,6 @@ const firebaseConfig = {
     NewsfeedPageComponent,
     StocksPageComponent,
     MypageComponent,
-    KeywordReaderComponent,
     ViewStockComponent,
     StockTableComponent,
     LinechartComponent,
@@ -83,6 +84,9 @@ const firebaseConfig = {
     NewsListComponent,
     StockCardComponent,
     ExchangeListComponent,
+    StocklistItemComponent,
+    StockListComponent,
+    StockChartComponent,
     NewsCardComponent,
     // FirestoreComponent
   ],
@@ -114,7 +118,7 @@ const firebaseConfig = {
     MatMenuModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [AuthService, HttpClient, KeywordReaderComponent, JsonReaderService, LoginModalComponent, StockMarketService],
+  providers: [AuthService, HttpClient, JsonReaderService, LoginModalComponent, StockMarketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

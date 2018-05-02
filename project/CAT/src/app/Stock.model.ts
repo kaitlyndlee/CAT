@@ -1,134 +1,51 @@
 import {AlphaVantageAPI} from "alpha-vantage-cli";
 
 var ALPHA_VANTAGE_KEY = '1I4DFBMCFGHXCYBI';
-var av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
+import { IEXClient } from 'iex-api'
+import * as _fetch from 'isomorphic-fetch'
+import {ChartRangeOption} from "iex-api/apis/stocks";
+
+const iex = new IEXClient(_fetch)
+
+
+
+// var av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
 
 export class Stock {
 
-  interval    : string;
-  dailyLoaded : boolean;
-  intraLoaded : boolean;
-  daily       : StockData[] = [];
-  intraday    : StockData[] = [];
+  quote: any;
+  news : any;
+  chart: any;
+  peers: any;
+  loaded: boolean;
 
   constructor(private stockSymbol: string) {
-    this.interval    = "15";
-    this.dailyLoaded = false;
-    this.intraLoaded = false;
-    this.update();
+    this.loaded = false;
+    this.refresh();
   }
 
-  isDailyLoaded() : boolean {
-
-    return this.dailyLoaded;
-  }
-
-  getDaily() : StockData[] {
-    return this.daily;
+  isLoaded() {
+    return this.loaded;
   }
 
   getSymbol() {
     return this.stockSymbol;
   }
 
-  getIntraday() : StockData[] {
-    return this.intraday;
-  }
-
-  getInterval() : string {
-    return this.interval;
-  }
-
-  setInterval(interval: string) {
-    this.interval = interval;
-    this.grabIntradayData();
-  }
-
-  private grabDaily() {
-    this.dailyLoaded = false;
-    av.getDailyData(this.stockSymbol).then(dailyData => {
-
-      let i;
-      this.daily = [];
-      for (i = 0; i < dailyData.length; i++) {
-        this.daily.push(new StockData(dailyData[i]));
+  refresh() {
+    iex.request("/stock/" + this.stockSymbol + "/batch?types=peers,quote,news,chart&range=1m&last=10").then(data => {
+      if(!data) {
+        console.log("BAD DATA DETECTED");
+        console.log(data);
+        return;
       }
-      this.dailyLoaded = true;
-    })
-      .catch(err => {
-        console.error(err);
-      });
-  }
+      console.log(data);
 
-  private grabIntradayData() {
-    this.intraLoaded = false;
-    av.getIntradayData(this.stockSymbol, this.interval).then(intradayData => {
-
-        let i;
-        this.intraday = [];
-        for (i = 0; i < intradayData.length; i++) {
-          this.intraday.push(new StockData(intradayData[i]));
-        }
-        this.intraLoaded = true;
-    })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-
-  update() {
-    this.grabDaily();
-    // this.grabIntradayData();
-  }
-}
-
-
-export class StockData {
-  timestamp: string;
-  close:     number;
-  high:      number;
-  low:       number;
-  open:      number;
-  volume:    number;
-
-  constructor(private jsonFeed: any){
-    this.timestamp = jsonFeed.Timestamp;
-    this.close     = jsonFeed.Close;
-    this.high      = jsonFeed.High;
-    this.low       = jsonFeed.Low;
-    this.open      = jsonFeed.Open;
-    this.volume    = jsonFeed.Volume;
-  }
-
-  getDifference(): string {
-    return (this.close - this.open).toFixed(2);
-  }
-
-  getPercent(): string {
-    return (( (this.open - this.close) / this.close ) * 100 ).toFixed(2);
-  }
-
-  getTimeStamp(): string {
-    return this.timestamp;
-  }
-
-  getClose(): number {
-    return this.close;
-  }
-
-  getHigh(): number {
-    return this.high;
-  }
-
-  getLow(): number {
-    return this.low;
-  }
-
-  getOpen(): number {
-    return this.open;
-  }
-
-  getVolume(): number {
-    return this.volume;
+      this.quote = data.quote;
+      this.news  = data.news;
+      this.chart = data.chart;
+      this.peers = data.peers;
+      this.loaded = true;
+    });
   }
 }

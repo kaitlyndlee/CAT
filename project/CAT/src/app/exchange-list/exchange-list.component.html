@@ -1,38 +1,11 @@
 
-<div class="row">
+<div class="row" *ngIf="getSelectedCompany()">
   <div class="col-md-12">
     <h5> <b>
-      AMEX Exchange
+      Related Stocks
     </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getAmexExchange()[0].stock.dailyLoaded">
-      <a *ngFor="let market of getStockMarket().getAmexExchange()" (click)="selectCompany(market)" style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{market.name}}
-            <br> </h5> <small class="text-success">+ {{market.stock.getDaily()[0].getPercent()}}% ({{market.stock.getDaily()[0].open}})</small> </div> <small>({{market.symbol}}) | {{market.stock.getDaily()[0].timestamp}}</small>
-      </a>
-    </div>
-    <br>
-    <h5> <b>
-      New York Stock Exchange
-    </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getNyseExchange()[0].stock.dailyLoaded">
-      <a *ngFor="let market of getStockMarket().getNyseExchange()" (click)="selectCompany(market)" style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{market.name}}
-            <br> </h5> <small class="text-success">+ {{market.stock.getDaily()[0].getPercent()}}% ({{market.stock.getDaily()[0].open}})</small> </div> <small>({{market.symbol}}) | {{market.stock.getDaily()[0].timestamp}}</small>
-      </a>
-    </div>
-    <br>
-    <h5> <b>
-      NASDAQ Exchange
-    </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getNasdaqExchange()[0].stock.dailyLoaded">
-      <a *ngFor="let market of getStockMarket().getNasdaqExchange()" (click)="selectCompany(market)" style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{market.name}}
-            <br> </h5> <small class="text-success">+{{market.stock.getDaily()[0].getPercent()}}% ({{market.stock.getDaily()[0].open}})</small> </div> <small>({{market.symbol}}) | {{market.stock.getDaily()[0].timestamp}}</small>
-      </a>
-
+    <div class="list-group">
+      <app-stocklist-item *ngFor="let company of getSelectedCompany().getRelatedCompanies()" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
     </div>
   </div>
 </div>

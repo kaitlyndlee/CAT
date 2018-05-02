@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="col-md-12" *ngIf="!isHorizontal()">
+    <h5> <b>
+      {{title}}
+    </b> </h5>
+    <div class="list-group vertical-scroll">
+      <app-stocklist-item *ngFor="let company of companyList" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
+    </div>
+  </div>
+
+
+
+<div class="col-md-12" *ngIf="isHorizontal()">
+  <!-- Wrapper for slides -->
+  <h5> <b>
+    {{title}} ({{companyList.length}})
+  </b> </h5>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+    <div class="carousel-inner">
+      <div *ngFor="let company of companyList, let index = index" (click)="selectCompany(company)" class="carousel-item" [ngClass]="{'active' : index == 0}">
+
+      <div class="row">
+        <div class="col-md-4">
+            <app-stocklist-item [company]="company"></app-stocklist-item>
+          </div>
+        <div class="col-md-4" *ngIf="companyList[index + 1]">
+          <app-stocklist-item [company]="companyList[index + 1]"></app-stocklist-item>
+        </div>
+        <div class="col-md-4" *ngIf="companyList[index + 2]">
+          <app-stocklist-item [company]="companyList[index + 2]"></app-stocklist-item>
+        </div>
+        </div>
+      </div>
+
+      </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" data-target="#myCarousel" data-slide="prev" style="cursor: pointer">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+    </a>
+    <a class="right carousel-control" data-target="#myCarousel" data-slide="next" style="cursor: pointer;">
+      <i class="fa fa-arrow-right" aria-hidden="true" style="float:right; padding: 20% 0 0 1%"></i>
+
+    </a>
+  </div>
+
+</div>
+</div>
