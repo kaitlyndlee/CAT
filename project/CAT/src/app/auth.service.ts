@@ -45,15 +45,6 @@ export class AuthService {
         if (user) {
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
           this.stocks = this.stockCollection.valueChanges();
-
-          this.stocks.forEach(object => {
-            StockMarketService.createCompanyFromSymbol((<any>object).symbol).then(data => {
-              this.favoritedCompanies.push(new CompanyModel(data));
-            });
-          });
-
-
-
           this.userID = user.uid;
           this.displayName =  user.displayName;
           this.email = user.email;
@@ -160,8 +151,6 @@ export class AuthService {
   }
 
   getUserStocks() {
-    console.log("Favorited companies");
-    console.log(this.favoritedCompanies);
-    return this.favoritedCompanies;
+    return this.stocks;
   }
 }

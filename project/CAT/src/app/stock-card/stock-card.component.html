@@ -8,65 +8,47 @@
                 ({{getCompany().symbol}}) - {{getCompany().name}}
               </div>
               <div class="col-md-4 d-inline-flex justify-content-end align-items-start">
-                <button class="btn navbar-btn ml-2 text-white" (click)="favoriteStock(getCompany())" style="width:auto; background: cadetblue">Favorite ♥</button>
+                <div *ngIf="!onMyPage()">
+                  <button class="btn navbar-btn ml-2 text-white" (click)="favoriteStock(getCompany())" style="width:auto; background: cadetblue">Favorite ♥</button>
+                </div>
               </div>
             </div>
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-md-12">
-                        <div class="row">
-                          <div class="col-md-7">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h2 class="mb-1">{{getCompany().name}}
-                                <br> </h2>
-                            </div>
-                          </div>
-                          <div class="col-md-5">
-                            <div class="col-md-12 d-inline-flex justify-content-end">
-                              <h2 class="d-inline-flex">{{getCompany().stock.quote.open}}</h2>
-                              <p class="d-inline-flex text-muted">USD</p>
-                              <h4 class="d-inline-flex" [ngClass]="{positive: isPositive(), negative: isNegative(), neutral: isNeutral()}">&nbsp; &nbsp;{{getCompanyStock().quote.change}} ({{getCompanyStock().quote.changePercent}}%)</h4>
-                            </div>
-                          </div>
-                        </div>
-              </div>
-              <div class="col-md-12">
-                <h6 class="text-muted" style="margin-left:5px;">[{{getCompany().symbol}}] {{getCompany().sector}} | {{getCompany().industry}} | Market Cap ({{getCompanyStock().quote.marketCap}})</h6>
-
-              </div>
-              <div class="col-md-12">
-                    <div class="row" style="margin-left: 0px;">
-                      <div class="col-md-1">
-                        <h6 class="d-flex justify-content-center">
-                          <br><b>Open:</b>
-                          <br> </h6>
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h2 class="mb-1">{{getCompany().name}}
+                          <br> </h2>
                       </div>
-                      <div class="col-md-1">
-                        <h6 class="d-inline-flex justify-content-start">{{getCompanyStock().quote.open}}</h6>
-                      </div>
-                      <div class="col-md-1">
-                        <h6 class="d-flex justify-content-center"><b>High:</b></h6>
-                      </div>
-                      <div class="col-md-1">
-                        <h6 class="d-inline-flex"><b></b>{{getCompanyStock().quote.high}}</h6>
-                      </div>
-                      <div class="col-md-1">
-                        <h6 class="d-flex justify-content-center"><b>Low:</b></h6>
-                      </div>
-                      <div class="col-md-1">
-                        <h6 class="d-inline-flex">{{getCompanyStock().quote.low}}</h6>
-                      </div>
-                      <div class="col-md-1">
-                        <h6 class="d-inline-flex"><b><br></b></h6>
-                      </div>
-
                     </div>
-
+                    <div class="col-md-5">
+                      <div class="col-md-12 d-inline-flex justify-content-end">
+                        <h2 class="d-inline-flex">{{getCompany().stock.quote.latestPrice}}</h2>
+                        <p class="d-inline-flex text-muted">USD</p>
+                        <h4 class="d-inline-flex" [ngClass]="{positive: isPositive(), negative: isNegative(), neutral: isNeutral()}">&nbsp; &nbsp;{{getCompanyStock().quote.change}} ({{getCompanyStock().quote.changePercent*100}}%)</h4>
+                      </div>
+                    </div>
+                  </div>
               </div>
+              <h6 class="text-muted" style="margin-left:15px;">{{getCompany().sector}} | {{getCompany().industry}} | Market Cap ({{getCompanyStock().quote.marketCap}})</h6>
 
+              <div class="col-md-12">
+                <div class="row" style="margin-left: 0px;">
+                  <h6 class="d-flex justify-content-center" style="padding-right: 5px"><br><b>Open:</b></h6>
+                  <h6 class="d-inline-flex ">{{getCompanyStock().quote.open}}</h6>
+                  <h6 class="d-flex justify-content-center" style="padding-left: 30px; padding-right: 5px"><b>High:</b></h6>
+                  <h6 class="d-inline-flex"><b></b>{{getCompanyStock().quote.high}}</h6>
+                  <h6 class="d-flex justify-content-center" style="padding-left: 30px; padding-right: 5px"><b>Low:</b></h6>
+                  <h6 class="d-inline-flex">{{getCompanyStock().quote.low}}</h6>
+                  <div class="col-md-1">
+                    <h6 class="d-inline-flex"><b><br></b></h6>
+                  </div>
+                </div>
+              </div>
             </div>
-
           </div>
           <hr style="width: 100%; color: dimgray; height: 1px; background-color:black; margin-top:-5px;">
           <app-stock-chart></app-stock-chart>

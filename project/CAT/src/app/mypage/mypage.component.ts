@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import {StocksPageComponent} from '../stocks-page/stocks-page.component';
 import {CompanyModel} from '../company.model';
+import {StockMarketService} from '../stock-market.service';
 // import {DatabaseService} from '../database.service';
 
 
@@ -13,7 +14,8 @@ import {CompanyModel} from '../company.model';
 })
 export class MypageComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  company : CompanyModel;
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -22,8 +24,8 @@ export class MypageComponent implements OnInit {
   }
 
   selectStock(ticker: string) {
-    // console.log(ticker);
-    StocksPageComponent.selectStockByTicker(ticker);
+   StockMarketService.selectCompany(ticker);
+    this.company = StockMarketService.selectedCompany;
   }
 
   getEmail() {
@@ -46,7 +48,7 @@ export class MypageComponent implements OnInit {
     return this.authService.isLoggedIn();
   }
 
-  selectCompany(company: CompanyModel) {
-    StocksPageComponent.selectedCompany = company;
+  getCompany() {
+    return this.company;
   }
 }

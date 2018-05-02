@@ -14,16 +14,16 @@
 
             <hr style="background-color: gray; height: .2px">
             <ul>
-            <li *ngFor="let stock of getUserStocks() | async" (click)="selectStock(stock.ticker)">
-              <a style="cursor: pointer">{{ stock.name }}</a>
+            <li *ngFor="let stock of getUserStocks() | async">
+              <a (click)="selectStock(stock.ticker)" style="cursor: pointer">{{ stock.name }}</a>
             </li>
             </ul>
           </div>
           <div class="col-md-2">
 
           </div>
-          <div class="col-md-10">
-            <app-stock-card></app-stock-card>
+          <div *ngIf="getCompany()" class="col-md-10">
+            <app-stock-card [company]="getCompany()"></app-stock-card>
           </div>
         </div>
       </div>
