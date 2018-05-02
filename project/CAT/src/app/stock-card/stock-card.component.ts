@@ -4,6 +4,7 @@ import {StocksPageComponent} from "../stocks-page/stocks-page.component";
 import {CompanyModel} from "../company.model";
 import {StockMarketService} from "../stock-market.service";
 import {AuthService} from "../auth.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-stock-card',
@@ -14,7 +15,7 @@ export class StockCardComponent implements OnInit {
 
   @Input() company: CompanyModel;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
   }
@@ -48,5 +49,9 @@ export class StockCardComponent implements OnInit {
       return false;
     }
     return this.getCompanyStock().quote.changePercent == 0.0;
+  }
+
+  onMyPage() {
+    return this.router.url === '/mypage';
   }
 }

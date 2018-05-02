@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col-md-12">
-    <h4>Relevant News...</h4>
-    <div class="list-group fade-in" [ngClass]="{'d-inline-flex flex-row' : isHorizontal()}">
+    <h4>Relevant News</h4>
+    <div class="list-group fade-in box" [ngClass]="{'d-inline-flex flex-row' : isHorizontal()}">
       <a *ngFor="let article of newsList" href="{{article.url}}" target="_blank" class="fade-in list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer">
         <small style="float: right;">{{getDayDifference(article.datetime)}} <small>Article Weight: {{parse(article.summary)}}</small></small>
 
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1"><b>{{article.headline}}</b></h5>
+
         </div>
-        <p class="mb-1">{{article.summary}}</p>
-        <small>{{article.source}}</small>
+        <p style= "font-size: 12px" class="mb-1">{{article.summary}}</p>
+        <small style="color: cadetblue;">{{article.source}}</small>
       </a>
 
     </div>
