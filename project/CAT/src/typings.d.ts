@@ -9,3 +9,8 @@ declare module "assets/keywords/*.json" {
   export default value;
 }
 
+declare module "assets/keywords/*.txt" {
+  const value: any;
+  export default value;
+}
+

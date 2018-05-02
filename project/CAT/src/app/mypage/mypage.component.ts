@@ -23,7 +23,7 @@ export class MypageComponent implements OnInit {
 
   selectStock(ticker: string) {
     // console.log(ticker);
-    StocksPageComponent.selectStockByTicker(ticker);
+    // StocksPageComponent.selectStockByTicker(ticker);
   }
 
   getEmail() {

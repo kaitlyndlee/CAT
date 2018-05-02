@@ -7,7 +7,7 @@
         <a href="" class="nav-link" (click)="setTimeframe('1d')" data-toggle="tab">1 Day</a>
       </li>
       <li class="nav-item">
-        <a href="" class="nav-link" (click)="setTimeframe('1m')" data-toggle="tab">1 Month</a>
+        <a href="" class="nav-link active" (click)="setTimeframe('1m')" data-toggle="tab">1 Month</a>
       </li>
       <li class="nav-item">
         <a href="" class="nav-link" (click)="setTimeframe('3m')" data-toggle="tab">3 Months</a>
@@ -47,10 +47,18 @@
 
 </div>
 <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Apple</button>
+    <button type="button" class="btn btn-secondary">Samsung</button>
+  </div>
   <div class="row">
     <div class="col-md-3" *ngFor="let color of colors, let index = index">
       <form>
-        {{titles[index]}}: <input type="color" id="{{index}}" value="#ff33ff">
+        {{titles[index]}}
+        <br>
+        Foreground: <input type="color"   (change)="changeColor(index)" id="fg-{{index}}" >
+        Background:  <input type="color"   (change)="changeColor(index)" id="bg-{{index}}" >
+
       </form>
     </div>
 

@@ -20,12 +20,13 @@ export class StockChartComponent implements AfterViewInit {
 
   }
 
-  changeColor(index: number, color: string) {
-    console.log("COlor: " + color);
-    let rgb = this.hexToRgb(color);
-    let rgbaColor = 'rgba(' + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.1)";
+  changeColor(index: number) {
+    let colorPicker : any = document.getElementById(index.toString());
+    let rgb = this.hexToRgb(colorPicker.value);
+    let rgbaColor = 'rgba(' + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.5)";
     console.log("Rgba color: " + rgbaColor);
     this.colors[index] = rgbaColor;
+    console.log(this.colors);
     this.setTimeframe("1m");
 
   }
@@ -56,8 +57,6 @@ export class StockChartComponent implements AfterViewInit {
   }
 
   updateChart(chart: any) {
-    this.canvas = document.getElementById("chart");
-    this.ctx = this.canvas.getContext('2d');
     console.log("Chart");
     console.log(chart);
     let labels = [];
@@ -92,24 +91,9 @@ export class StockChartComponent implements AfterViewInit {
       datasets.push(data);
     }
 
-
-    this.myChart = new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: datasets
-      },
-      options: {
-        responsive: true,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
-            }
-          }]
-        }
-      }
-    });
+    this.myChart.data.datasets = datasets;
+    this.myChart.data.labels = labels;
+    this.myChart.update();
   }
 
   hexToRgb(hex) {
@@ -127,22 +111,32 @@ export class StockChartComponent implements AfterViewInit {
     } : null;
   }
 
-  rgbToHex(r, g, b) {
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-  }
 
   ngAfterViewInit(): void {
-    for (let i = 0; i < this.titles.length; i++) {
-      let colorchanger :any = document.getElementById(i.toString());
-      if (colorchanger) {
-        console.log("Color changer found");
-      }
-      else {
-        console.log("Not found");
-      }
-      // colorchanger.addEventListener("click", this.changeColor(i, colorchanger.value), false);
-    }
+
+    this.createChart();
     this.setTimeframe("1m");
   }
 
+  createChart() {
+    this.canvas = document.getElementById("chart");
+    this.ctx = this.canvas.getContext('2d');
+    this.myChart = new Chart(this.ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: []
+      },
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
+          }]
+        }
+      }
+    });
+  }
 }

@@ -22,7 +22,7 @@ export class StockMarketService {
 
   constructor() {
     StockMarketService.fetchSymbols().then(data => {
-      StockMarketService.getCompanies(0, 100).then(data => {
+      StockMarketService.getCompanies(0, 1000).then(data => {
         StockMarketService.companyList = data;
         StockMarketService.selectCompany(data[0].symbol);
         console.log(data);

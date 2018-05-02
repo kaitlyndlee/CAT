@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ArticleParserService} from "../article-parser.service";
 
 @Component({
   selector: 'app-news-list',
@@ -8,10 +9,14 @@ import {Component, Input, OnInit} from '@angular/core';
 export class NewsListComponent implements OnInit {
   @Input() horizontal: boolean;
   @Input() newsList : any;
-  constructor() { }
+  constructor(private parser: ArticleParserService) { }
 
   ngOnInit() {
 
+  }
+
+  parse(feed: string) {
+    return this.parser.parse(feed);
   }
 
   isHorizontal() : boolean {
