@@ -1,25 +1,11 @@
 
-<div class="row">
+<div class="row" *ngIf="getSelectedCompany()">
   <div class="col-md-12">
     <h5> <b>
-      AMEX Exchange
+      Related Stocks
     </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getAmexExchange()[0].stock.dailyLoaded">
-      <app-stocklist-item *ngFor="let company of getStockMarket().getAmexExchange()" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
-    </div>
-    <br>
-    <h5> <b>
-      New York Stock Exchange
-    </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getNyseExchange()[0].stock.dailyLoaded">
-      <app-stocklist-item *ngFor="let company of getStockMarket().getNyseExchange()" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
-    </div>
-    <br>
-    <h5> <b>
-      NASDAQ Exchange
-    </b> </h5>
-    <div class="list-group" *ngIf="getStockMarket().getNasdaqExchange()[0].stock.dailyLoaded">
-      <app-stocklist-item *ngFor="let company of getStockMarket().getNasdaqExchange()" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
+    <div class="list-group">
+      <app-stocklist-item *ngFor="let company of getSelectedCompany().getRelatedCompanies()" (click)="selectCompany(company)" [company]="company"></app-stocklist-item>
     </div>
   </div>
 </div>

@@ -13,28 +13,14 @@
             <h3>Hi, {{getName()}}</h3>
             <!--<p>UID: {{getID()}}</p>-->
             <!--<p>email: {{getEmail()}}</p>-->
-            <ul>
-            <li *ngFor="let stock of getUserStocks() | async">
-              <a class="nav-link" routerLink="/stocks"><i class="fa d-inline fa-lg"></i> {{ stock.name }}</a>
-                <!--<a style="text-decoration: none;color: black" routerLink="stocks">{{ stock.name }}</a>-->
-            </li>
-            </ul>
+            <!--<ul>-->
+              <app-stock-list [companyList]="getUserStocks() | async"></app-stock-list>
+            <!--<li *ngFor="let stock of getUserStocks() | async">-->
+              <!--<a class="nav-link" routerLink="/stocks"><i class="fa d-inline fa-lg"></i> {{ stock.name }}</a>-->
+                <!--&lt;!&ndash;<a style="text-decoration: none;color: black" routerLink="stocks">{{ stock.name }}</a>&ndash;&gt;-->
+            <!--</li>-->
+            <!--</ul>-->
           </div>
-          <!--<div class="btn-group">-->
-            <!--<div class="dropdown-menu">-->
-              <!--<a class="dropdown-item" href="#">Action</a>-->
-              <!--<div class="dropdown-divider"></div>-->
-              <!--<a class="dropdown-item" href="#">Separated link</a>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<form class="form-inline">-->
-            <!--<div class="input-group">-->
-              <!--<input type="email" class="form-control" placeholder="Search stock">-->
-              <!--<div class="input-group-append">-->
-                <!--<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</form>-->
 
         </div>
       </div>

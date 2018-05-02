@@ -1,16 +1,7 @@
 import {Stock} from "./Stock.model";
+import {StockMarketService} from "./stock-market.service";
 
 export class CompanyModel {
-
-  // stock        : Stock;
-  // symbol       : string;
-  // name         : string;
-  // marketCap    : string;
-  // ipoYear      : string;
-  // sector       : string;
-  // industry     : string;
-  // summaryQuote : string;
-  // lastSale     : number;
 
   CEO         : string;
   name        : string;
@@ -22,22 +13,11 @@ export class CompanyModel {
   symbol      : string;
   website     : string;
   stock       : Stock;
-
-  // constructor(jsonFeed: any) {
-  //   this.symbol       = (<any> jsonFeed).Symbol;
-  //   this.name         = (<any> jsonFeed).Name;
-  //   this.lastSale     = (<any> jsonFeed).LastSale;
-  //   this.marketCap    = (<any> jsonFeed).MarketCap;
-  //   this.ipoYear      = (<any> jsonFeed).IPOyear;
-  //   this.sector       = (<any> jsonFeed).Sector;
-  //   this.industry     = (<any> jsonFeed).industry;
-  //   this.summaryQuote = (<any> jsonFeed).SummaryQuote;
-  //   this.stock        = new Stock(this.symbol);
-  // }
+  relatedCompanies: CompanyModel[];
 
   constructor(jsonFeed: any) {
     this.CEO         = (<any> jsonFeed).CEO;
-    this.name        = (<any> jsonFeed).name;
+    this.name        = (<any> jsonFeed).companyName;
     this.description = (<any> jsonFeed).description;
     this.exchange    = (<any> jsonFeed).exchange;
     this.industry    = (<any> jsonFeed).industry;
@@ -45,36 +25,38 @@ export class CompanyModel {
     this.sector      = (<any> jsonFeed).sector;
     this.symbol      = (<any> jsonFeed).symbol;
     this.website     = (<any> jsonFeed).website;
+    this.relatedCompanies = [];
     this.stock       = null;
+
   }
 
-  setStock(stock: Stock) {
-    this.stock = stock;
+  getStock() : Stock {
+    if (!this.stock) {
+      this.stock = new Stock(this.symbol);
+    }
+    if (!this.relatedCompanies) {
+
+
+      let promises = [];
+      for (let symbol of this.getPeers()) {
+        promises.push(StockMarketService.createCompanyFromSymbol(symbol));
+      }
+      Promise.all(promises).then(data => {
+        this.relatedCompanies = data;
+      });
+    }
+    return this.stock;
   }
 
+  getRelatedCompanies()  {
+    return this.relatedCompanies;
+  }
 
-  // stock        : Stock;
-  // symbol       : string;
-  // name         : string;
-  // marketCap    : string;
-  // ipoYear      : string;
-  // sector       : string;
-  // industry     : string;
-  // summaryQuote : string;
-  // lastSale     : number;
-  //
-  // constructor(jsonFeed: any) {
-  //   this.symbol       = (<any> jsonFeed).Symbol;
-  //   this.name         = (<any> jsonFeed).Name;
-  //   this.lastSale     = (<any> jsonFeed).LastSale;
-  //   this.marketCap    = (<any> jsonFeed).MarketCap;
-  //   this.ipoYear      = (<any> jsonFeed).IPOyear;
-  //   this.sector       = (<any> jsonFeed).Sector;
-  //   this.industry     = (<any> jsonFeed).industry;
-  //   this.summaryQuote = (<any> jsonFeed).SummaryQuote;
-  //   this.stock        = new Stock(this.symbol);
-  // }
+  getPeers() {
+    return this.getStock().peers;
+  }
 
-
-
+  refresh() {
+    this.stock.refresh();
+  }
 }

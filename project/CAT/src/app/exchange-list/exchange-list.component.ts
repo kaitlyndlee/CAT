@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CompanyModel} from "../company.model";
 import {StockMarketService} from "../stock-market.service";
-import {StockMarketModel} from "../stock-market.model";
 import {StocksPageComponent} from "../stocks-page/stocks-page.component";
 
 @Component({
@@ -16,8 +15,8 @@ export class ExchangeListComponent implements OnInit {
   ngOnInit() {
   }
 
-  getStockMarket(): StockMarketModel {
-    return this.stockService.getStockMarket();
+  getSelectedCompany() {
+    return StockMarketService.selectedCompany;
   }
 
   selectCompany(company: CompanyModel) {

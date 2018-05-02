@@ -13,161 +13,39 @@ const iex = new IEXClient(_fetch)
 
 export class Stock {
 
-  interval    : string;
-  dailyLoaded : boolean;
-  intraLoaded : boolean;
-  daily       : StockData[] = [];
-  intraday    : StockData[] = [];
-  static av = new AlphaVantageAPI(ALPHA_VANTAGE_KEY, 'compact', true);
+  quote: any;
+  news : any;
+  chart: any;
+  peers: any;
+  loaded: boolean;
 
   constructor(private stockSymbol: string) {
-    this.interval    = "15";
-    this.dailyLoaded = false;
-    this.intraLoaded = false;
-    this.update();
+    this.loaded = false;
+    this.refresh();
   }
 
-  isDailyLoaded() : boolean {
-
-    return this.dailyLoaded;
-  }
-
-  getDaily() : StockData[] {
-    return this.daily;
+  isLoaded() {
+    return this.loaded;
   }
 
   getSymbol() {
     return this.stockSymbol;
   }
 
-  getIntraday() : StockData[] {
-    return this.intraday;
-  }
+  refresh() {
+    iex.request("/stock/" + this.stockSymbol + "/batch?types=peers,quote,news,chart&range=1m&last=10").then(data => {
+      if(!data) {
+        console.log("BAD DATA DETECTED");
+        console.log(data);
+        return;
+      }
+      console.log(data);
 
-  getInterval() : string {
-    return this.interval;
-  }
-
-  setInterval(interval: string) {
-    this.interval = interval;
-    this.grabIntradayData();
-  }
-
-  // private grabDaily() {
-  //   this.dailyLoaded = false;
-  //   Stock.av.getDailyData(this.stockSymbol).then(dailyData => {
-  //
-  //     let i;
-  //     this.daily = [];
-  //     for (i = 0; i < dailyData.length; i++) {
-  //       this.daily.push(new StockData(dailyData[i]));
-  //     }
-  //     this.dailyLoaded = true;
-  //   })
-  //     .catch(err => {
-  //       console.error(err);
-  //     });
-  // }
-
-  private grabDaily() {
-
-      this.dailyLoaded = false;
-      iex.stockNews(this.stockSymbol).then(daily=> {
-        console.log(daily);
-      });
-
-
-      iex.stockFinancials(this.stockSymbol).then(data => {
-        console.log(data.financials);
-      });
-
-      iex.stockCompany(this.stockSymbol).then(daily => {
-        console.log(daily)
-
-        let i;
-        let temp = [];
-        for (i = 0; i < daily.exchange.length; i++) {
-          temp.push(new StockData(daily[i]));
-          console.log(daily.exchange)
-        }
-        this.dailyLoaded = true;
-        this.daily = temp;
-        })
-        .catch(err => {
-          console.error(err);
-        });
-
-  }
-
-  private grabIntradayData() {
-    this.intraLoaded = false;
-    Stock.av.getIntradayData(this.stockSymbol, this.interval).then(intradayData => {
-
-        let i;
-        this.intraday = [];
-        for (i = 0; i < intradayData.length; i++) {
-          this.intraday.push(new StockData(intradayData[i]));
-        }
-        this.intraLoaded = true;
-    })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-
-  update() {
-    // this.grabDaily();
-    // this.grabIntradayData();
-  }
-}
-
-
-export class StockData {
-  timestamp: string;
-  close:     number;
-  high:      number;
-  low:       number;
-  open:      number;
-  volume:    number;
-
-  constructor(private jsonFeed: any){
-    this.timestamp = jsonFeed.Timestamp;
-    this.close     = jsonFeed.Close;
-    this.high      = jsonFeed.High;
-    this.low       = jsonFeed.Low;
-    this.open      = jsonFeed.Open;
-    this.volume    = jsonFeed.Volume;
-  }
-
-  getDifference(): string {
-    return (this.close - this.open).toFixed(2);
-  }
-
-  getPercent(): string {
-    return (( (this.open - this.close) / this.close ) * 100 ).toFixed(2);
-  }
-
-  getTimeStamp(): string {
-    return this.timestamp;
-  }
-
-  getClose(): number {
-    return this.close;
-  }
-
-  getHigh(): number {
-    return this.high;
-  }
-
-  getLow(): number {
-    return this.low;
-  }
-
-  getOpen(): number {
-    return this.open;
-  }
-
-  getVolume(): number {
-    return this.volume;
+      this.quote = data.quote;
+      this.news  = data.news;
+      this.chart = data.chart;
+      this.peers = data.peers;
+      this.loaded = true;
+    });
   }
 }

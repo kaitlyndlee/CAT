@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StockMarketModel} from "../stock-market.model";
+import {StockMarketService} from "../stock-market.service";
 
 @Component({
   selector: 'app-stock-search-model',
@@ -8,12 +9,12 @@ import {StockMarketModel} from "../stock-market.model";
 })
 export class StockSearchModelComponent implements OnInit {
 
-  @Input() stockMarket: StockMarketModel;
+  symbols : string[] = StockMarketService.symbols;
   constructor() { }
 
 
   filterSearch() {
-    if (this.stockMarket) {
+    if (this.symbols) {
 
       let input, filter, ul, li, a, i;
       input = document.getElementById('myInput');
@@ -34,6 +35,14 @@ export class StockSearchModelComponent implements OnInit {
     }
 
   }
+
+  selectStock(symbol : string) {
+    let input : any = document.getElementById('myInput');
+    input.value = "";
+    this.filterSearch();
+    StockMarketService.selectCompany(symbol);
+  }
+
   ngOnInit() {
   }
 

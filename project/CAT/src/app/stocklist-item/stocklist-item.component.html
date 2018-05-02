@@ -1,5 +1,6 @@
-<a style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">{{company.name}}
-      <br> </h5> <small class="text-success">+ {{company.stock.getDaily()[0].getPercent()}}% ({{company.stock.getDaily()[0].open}})</small> </div> <small>({{company.symbol}}) | {{company.stock.getDaily()[0].timestamp}}</small>
+<a style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start" *ngIf="company.getStock()">
+  <div class="w-100" *ngIf="getCompanyStock().quote">
+    <small class="text-success" style="float: right;">{{getCompanyStock().quote.percentChange}}% ({{getCompanyStock().quote.open}})</small>
+    <small class="mb-1">{{company.name}}
+      <br> </small></div> <small>({{company.symbol}}) | {{getCompanyStock().quote}}</small>
 </a>

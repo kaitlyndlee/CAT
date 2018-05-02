@@ -1,5 +1,5 @@
 <input type="text" id="myInput" (keyup)="filterSearch()" placeholder="Search for names.."><i id="icon" class="fa fa-search" style="cursor:default;"></i>
 
-<ul id="myUL" *ngIf="stockMarket">
-  <li *ngFor="let market of stockMarket.getCollectiveMarket()" style="display: none; cursor: pointer; position: relative; z-index: 5;"><a (click)="addToFavorite(market)">{{market.name}}</a></li>
+<ul id="myUL" *ngIf="symbols">
+  <li *ngFor="let symbol of symbols" style="display: none; cursor: pointer; position: relative; z-index: 5;"><a (click)="selectStock(symbol)">{{symbol}}</a></li>
 </ul>

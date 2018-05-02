@@ -1,0 +1,59 @@
+
+<div class="row">
+
+  <div class="col-md-12">
+    <ul class="nav nav-tabs" style="float: left;width: 100%;">
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('1d')" data-toggle="tab">1 Day</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('1m')" data-toggle="tab">1 Month</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('3m')" data-toggle="tab">3 Months</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('6m')" data-toggle="tab">6 Months</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('ytd')" data-toggle="tab">Year to Date</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('1y')" data-toggle="tab">1 Year</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('2y')" data-toggle="tab">2 Years</a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link" (click)="setTimeframe('5y')" data-toggle="tab">5 Years</a>
+      </li>
+      <li class="nav-item">
+
+      </li>
+      <li class="nav-item" style="float: right;">
+        <div id="accordion" class="accordion">
+          <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne" style="cursor: pointer;">
+              <a class="card-title">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                Graph Settings
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let color of colors, let index = index">
+      <form>
+        {{titles[index]}}: <input type="color" id="{{index}}" value="#ff33ff">
+      </form>
+    </div>
+
+  </div>
+</div>
+<canvas id="chart"></canvas>

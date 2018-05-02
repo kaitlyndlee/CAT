@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CompanyModel} from "../company.model";
+import {StockMarketService} from "../stock-market.service";
 
 @Component({
   selector: 'app-stocklist-item',
@@ -9,7 +10,11 @@ import {CompanyModel} from "../company.model";
 export class StocklistItemComponent implements OnInit {
 
   @Input() company: CompanyModel;
-  constructor() { }
+  constructor(stockService : StockMarketService) { }
+
+  getCompanyStock() {
+    return this.company.getStock();
+  }
 
   ngOnInit() {
   }

@@ -28,8 +28,8 @@ export class LinechartComponent implements OnInit {
 
     for (let i = 0; i < 10; i++) {
       data.push({
-        "Label": this.stock.getDaily[i].timestamp,
-        "value": this.stock.getDaily[i].close
+        "Label": this.stock.quote.latestTime,
+        "value": this.stock.quote.close
       })
     }
     this.dataSource = {

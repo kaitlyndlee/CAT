@@ -8,15 +8,37 @@ import {StockMarketService} from "../stock-market.service";
   styleUrls: ['./stock-list.component.css']
 })
 export class StockListComponent implements OnInit {
-
+  @Input() title : string;
+  @Input() horizontal: boolean;
   @Input() companyList : CompanyModel[];
-  constructor(private stockService: StockMarketService) { }
+  constructor(ss: StockMarketService) {
+  }
 
   ngOnInit() {
+
   }
 
   selectCompany(company: CompanyModel) {
-    StockMarketService.selectedCompany = company;
+    StockMarketService.selectCompany(company.symbol);
+  }
+
+  getCompaniesForCarousel() {
+    let temp = [];
+    let index = 0;
+    temp[index] = [];
+    for (let i = 0; i < this.companyList.length; i++) {
+      temp[index].push(this.companyList[i]);
+      if (i > 0 && i % 3 == 0) {
+        index++;
+        temp[index] = [];
+      }
+    }
+    console.log(temp);
+    return temp;
+  }
+
+  isHorizontal() : boolean {
+    return this.horizontal;
   }
 
 }

@@ -1,26 +1,16 @@
 <div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <div class="row justify-content-end"> <small class="d-flex justify-content-end text-muted" style="margin-top: -10px;">Article Weight: + 15</small> </div>
-        <p class="text-capitalize" style="font-size:16px;" contenteditable="true"><b>Judge rules coffee sold in California needs cancer warnings</b></p>
-        <hr style="width: 100%; background-color: gray; height: .5px; margin-top:-10px;" class="">
-        <p class="text-muted" style="margin-top: -10px;"> Companies such as Starbucks have failed to provide carcinogen warnings [...] </p>
-        <p style="font-size: 13px; margin-top:15px; margin-bottom: -5px;" class="text-muted">CTV News - 3 days ago
-          <br> </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-body">
-        <div class="row justify-content-end"> <small class="d-flex justify-content-end text-muted" style="margin-top: -10px;">Article Weight: + 15</small> </div>
-        <p class="text-capitalize" style="font-size:16px;" contenteditable="true"><b>Judge rules coffee sold in California needs cancer warnings</b></p>
-        <hr style="width: 100%; background-color: gray; height: .5px; margin-top:-10px;" class="">
-        <p class="text-muted" style="margin-top:-10px;"> Companies such as Starbucks have failed to provide carcinogen warnings [...] </p>
-        <p style="font-size: 13px; margin-top:15px; margin-bottom: -5px;" class="text-muted">CTV News - 3 days ago
-          <br> </p>
-      </div>
+  <div class="col-md-12">
+    <h4>Relevant News...</h4>
+    <div class="list-group fade-in" [ngClass]="{'d-inline-flex flex-row' : isHorizontal()}">
+      <a *ngFor="let article of newsList" href="{{article.url}}" target="_blank" class="fade-in list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer">
+        <small style="float: right;">{{getDayDifference(article.datetime)}}</small>
+
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{article.headline}}</h5>
+        </div>
+        <p class="mb-1">{{article.summary}}</p>
+        <small>{{article.source}}</small>
+      </a>
     </div>
   </div>
 </div>
