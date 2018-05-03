@@ -1,0 +1,106 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+        <div class="row" *ngIf="active">
+          <div class="col-md-4" *ngIf="active">
+            <h2><b>Most Active</b></h2>
+            <table class="table table-striped"  style="cursor: pointer">
+              <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Percent Change</th>
+                <th>Latest Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let company of active" (click)="selectStock(company.symbol)" routerLink="/stocks">
+                <td>{{company.symbol}}</td>
+                <td [ngClass]="{positive : company.changePercent > 0, negative : company.changePercent < 0, neutral : company.changePercent == 0}">{{format(company.changePercent * 100)}}%</td>
+                <td>{{company.latestPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4" *ngIf="gainers">
+            <h2><b>Top Gainers</b></h2>
+            <table class="table table-striped"  style="cursor: pointer">
+              <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Percent Change</th>
+                <th>Latest Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let company of gainers"  (click)="selectStock(company.symbol)" routerLink="/stocks">
+                <td>{{company.symbol}}</td>
+                <td [ngClass]="{positive : company.changePercent > 0, negative : company.changePercent < 0, neutral : company.changePercent == 0}">{{format(company.changePercent * 100)}}%</td>
+                <td>{{company.latestPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4" *ngIf="losers">
+            <h2><b>Top Losers</b></h2>
+            <table class="table table-striped"  style="cursor: pointer">
+              <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Percent Change</th>
+                <th>Latest Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let company of losers"  (click)="selectStock(company.symbol)" routerLink="/stocks">
+                <td>{{company.symbol}}</td>
+                <td [ngClass]="{positive : company.changePercent > 0, negative : company.changePercent < 0, neutral : company.changePercent == 0}">{{format(company.changePercent * 100)}}%</td>
+                <td>{{company.latestPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6" *ngIf="percent">
+            <h2><b>By Percent</b></h2>
+            <table class="table table-striped"  style="cursor: pointer">
+              <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Percent Change</th>
+                <th>Market Percent</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let company of percent"  (click)="selectStock(company.symbol)" routerLink="/stocks">
+                <td>{{company.symbol}}</td>
+                <td [ngClass]="{positive : company.changePercent > 0, negative : company.changePercent < 0, neutral : company.changePercent == 0}">{{format(company.iexMarketPercent * 100)}}%</td>
+                <td>{{company.latestPrice}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6" *ngIf="volume">
+            <h2><b>By Volume</b></h2>
+            <table class="table table-striped"  style="cursor: pointer">
+              <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Percent Change</th>
+                <th>Market Volume</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let company of volume"  (click)="selectStock(company.symbol)" routerLink="/stocks">
+                <td>{{company.symbol}}</td>
+                <td [ngClass]="{positive : company.changePercent > 0, negative : company.changePercent < 0, neutral : company.changePercent == 0}">{{format(company.changePercent * 100)}}%</td>
+                <td>{{company.avgTotalVolume}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

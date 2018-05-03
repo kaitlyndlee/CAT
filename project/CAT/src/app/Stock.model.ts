@@ -17,6 +17,9 @@ export class Stock {
   news : any;
   chart: any;
   peers: any;
+  book : any;
+  financials: any;
+  trades : any;
   loaded: boolean;
 
   constructor(private stockSymbol: string) {
@@ -33,18 +36,26 @@ export class Stock {
   }
 
   refresh() {
-    iex.request("/stock/" + this.stockSymbol + "/batch?types=peers,quote,news,chart&range=1m&last=5").then(data => {
+    if (!this.stockSymbol) return;
+    return iex.request("/stock/" + this.stockSymbol + "/batch?types=book,financials,peers,quote,news,chart&range=1m&last=4").then(data => {
       if(!data) {
         console.log("BAD DATA DETECTED");
         console.log(data);
         return;
       }
+      console.log("Fetched");
       console.log(data);
 
       this.quote = data.quote;
       this.news  = data.news;
       this.chart = data.chart;
       this.peers = data.peers;
+      this.book  = data.book;
+      this.financials = data.financials;
+      iex.request("/deep/trades?symbols=" + this.stockSymbol + "&last=100").then(data => {
+        this.trades = data;
+        console.log(data);
+      });
       this.loaded = true;
     });
   }

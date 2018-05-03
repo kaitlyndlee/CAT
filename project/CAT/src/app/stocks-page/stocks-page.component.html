@@ -8,21 +8,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<div class="py-5">
+<div class="py-5" *ngIf="getSelectedCompany()">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <!--<app-stock-list [title]="getRelatedCompaniesTitle()" [companyList]="getSelectedCompany().getRelatedCompanies()" [horizontal]="true"></app-stock-list>-->
-            <app-stock-card *ngIf="getSelectedCompany()" [company]="getSelectedCompany()"></app-stock-card>
+            <app-stock-card *ngIf="getSelectedCompany().getStock()" [company]="getSelectedCompany()"></app-stock-card>
         <br>
-        <app-stock-list [title]="getRelatedCompaniesTitle()" [companyList]="getSelectedCompany().getRelatedCompanies()" [horizontal]="true"></app-stock-list>
+        <!--<app-stock-list [title]="getRelatedCompaniesTitle()" [companyList]="getSelectedCompany().getRelatedCompanies()" [horizontal]="true"></app-stock-list>-->
 
         <br>
 
       </div>
-      <div class="col-md-3" *ngIf="getSelectedCompany().getRelatedCompanies()">
+      <div class="col-md-3" *ngIf="getSelectedCompany().getStock() && getSelectedCompany().getRelatedCompanies()">
         <!--<app-stock-list [title]="getRelatedCompaniesTitle()" [companyList]="getSelectedCompany().getRelatedCompanies()"></app-stock-list>-->
         <app-news-list [newsList]="getSelectedCompany().getStock().news"></app-news-list>
+      </div>
+      <div class="col-md-12">
+        <app-stock-supplemental-info *ngIf="getSelectedCompany()" [company]="getSelectedCompany()"></app-stock-supplemental-info>
       </div>
     </div>
 </div>

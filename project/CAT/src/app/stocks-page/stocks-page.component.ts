@@ -15,8 +15,6 @@ export class StocksPageComponent implements OnInit {
 
   companies : CompanyModel[] = [];
 
-  static selectedCompany: CompanyModel;
-
   constructor(private authService: AuthService) {
 
   }

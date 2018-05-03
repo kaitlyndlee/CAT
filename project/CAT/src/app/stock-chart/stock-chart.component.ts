@@ -11,6 +11,7 @@ export class StockChartComponent implements AfterViewInit {
 
   canvas: any;
   ctx: any;
+  interval : string;
   colors: string[] = ['rgba(0, 255, 0, .5)', 'rgba(0, 0, 255,.5)','rgba(192,192,192,.5)',  'rgba(255, 0 ,0,.5)'];
   titles = ["Market Low","Market Open", "Market Close", "Market High"];
   myChart;
@@ -27,8 +28,8 @@ export class StockChartComponent implements AfterViewInit {
     console.log("Rgba color: " + rgbaColor);
     this.colors[index] = rgbaColor;
     console.log(this.colors);
-    this.setTimeframe("1m");
-    // this.updateChartColor(index);
+    // this.setTimeframe("1m");
+    this.updateChartColor(index);
   }
 
   updateChartColor(index : number) {
@@ -42,6 +43,7 @@ export class StockChartComponent implements AfterViewInit {
   }
 
   setTimeframe(value : string) {
+    this.interval = value;
     let interval;
     switch(value) {
       case '1d':
@@ -76,12 +78,24 @@ export class StockChartComponent implements AfterViewInit {
     let lowData   = [];
     let values = [lowData, openData, closeData, highData];
 
+
     for (let value of chart) {
       if (value["label"]) labels.push(value["label"]);
       if (value["open"]&& value["open"] != -1) openData.push(value["open"]);
       if (value["close"] && value["close"] != -1) closeData.push(value["close"]);
       if (value["high"]&& value["high"] != -1) highData.push(value["high"]);
       if (value["low"]&& value["low"] != -1) lowData.push(value["low"]);
+      if (this.interval == "1d") {
+        let high = value["marketHigh"];
+        let low = value["marketLow"];
+        if (high != -1) {
+          highData.push(value["marketHigh"]);
+
+        }
+        if(low != -1) {
+          lowData.push(value["marketLow"]);
+        }
+      }
     }
 
     let datasets = [];

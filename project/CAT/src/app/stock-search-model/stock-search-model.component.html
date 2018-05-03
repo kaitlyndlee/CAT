@@ -1,5 +1,5 @@
 <input type="text" id="myInput" (keyup)="filterSearch()" placeholder="Search for stocks.."><i id="icon" class="fa fa-search" style="cursor:default;"></i>
 
-<ul id="myUL" style="position: absolute; width:23%" *ngIf="symbols">
-  <li *ngFor="let symbol of symbols" style="display: none; cursor: pointer; position: relative; z-index: 5;"><a (click)="selectStock(symbol)">{{symbol}}</a></li>
+<ul id="myUL" style="position: absolute; width:23%" *ngIf="companyList">
+  <li *ngFor="let item of companyList" style="display: none; cursor: pointer; position: relative; z-index: 5;" routerLink="stocks"><a (click)="selectStock(item.Symbol)">{{item.Name}} | [{{item.Symbol}}]</a></li>
 </ul>

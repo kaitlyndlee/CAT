@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-7">
+    <h4 class=""><b>Trades</b></h4>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th style="text-align: right; border-right: 1px solid gray;"> Price </th>
+        <th style="text-align: center;"> Size </th>
+        <th style="text-align: left; border-left: 1px solid gray;"> Time (ET) </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let trade of company.getStock().book.trades">
+        <td [ngClass]="{positive : isPositive(trade.price), negative: isNegative(trade.price), neutral : isNeutral(trade.price)}" style="float: right">{{trade.price}}</td>
+        <td style="text-align: center">{{trade.size}}</td>
+        <td>{{getTime(trade.timestamp)}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5">
+    <h4 class=""><b>Books</b></h4>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th style="text-align: right; border-right: 1px solid gray;"> Bids </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let bid of company.getStock().book.bids"><td style="float: right" [ngClass]="{positive : isPositive(bid.price), negative: isNegative(bid.price), neutral : isNeutral(bid.price)}">{{bid.size}} | {{bid.price}}</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th style="text-align: left; border-left: 1px solid gray;"> Asks </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ask of company.getStock().book.asks"><td [ngClass]="{positive : isPositive(ask.price), negative: isNegative(ask.price), neutral : isNeutral(ask.price)}">{{ask.price}} | {{ask.size}}</td></tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+</div>

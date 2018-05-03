@@ -44,17 +44,10 @@
 
 </div>
 <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
-  <div class="btn-group">
-    <button type="button" class="btn btn-secondary">Apple</button>
-    <button type="button" class="btn btn-secondary">Samsung</button>
-  </div>
   <div class="row">
     <div class="col-md-3" *ngFor="let color of colors, let index = index">
       <form>
-        {{titles[index]}}
-        <br>
-        Foreground: <input type="color"     (change)="changeColor(index)" id="fg-{{index}}" >
-        Background:  <input type="checkbox" (change)="toggleBackground(index)" id="bg-{{index}}" >
+        {{titles[index]}}: <input type="color"     (change)="changeColor(index)" id="{{index}}" >
 
       </form>
     </div>
