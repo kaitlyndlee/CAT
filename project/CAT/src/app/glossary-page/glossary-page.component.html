@@ -5,7 +5,7 @@
 
 <div class="title">
   <div class="container">
-    <div class="row" id="title">
+    <div class="row" id="top">
       <div class="headline-column">
         <h1 class="display-1">Stock Jargon Glossary
           <br> </h1>
@@ -25,9 +25,12 @@
   </div>
 </div>
 <div class="container">
-  <div class="row stickyBar">
-    <div class="btn-group border border-primary btn-group-lg mx-auto bg-dark" id="glossary_buttons">
-      <a (click)="onClickTop()"class="btn btn-outline-primary" id="top_button">Top^</a>
+  <div class="row stickyBar" style="margin-left: -70px; margin-bottom: -47px">
+      <a class="btn btn-outline-primary" style="margin-bottom: -20px" (click)="onClickTop()">Top^</a>
+  </div>
+<div class="btn-group border-primary btn-group-lg navbarMain mx-auto verdana" id="navbar_buttons">
+</div>
+    <div class="btn-group border-primary btn-group-lg mx-auto" id="glossary_buttons">
       <a (click)="onClickA()" class="btn btn-outline-primary" id="A_button">A</a>
       <a (click)="onClickB()"class="btn btn-outline-primary" id="B_button">B</a>
       <a (click)="onClickC()" class="btn btn-outline-primary" id="C_button">C</a>
@@ -55,7 +58,6 @@
       <a (click)="onClickY()" class="btn btn-outline-primary" id="Y_button">Y</a>
       <a class="btn btn-outline-primary" (click)="onClickZ()">Z</a>
     </div>
-  </div>
   <div class="row">
     <div class="col-md-12">
       <a id="A">

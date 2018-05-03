@@ -169,7 +169,7 @@ export class GlossaryPageComponent implements OnInit {
     }
   }
   onClickTop() {
-    let x = document.querySelector("#title");
+    let x = document.querySelector("#top");
     if (x) {
       x.scrollIntoView();
     }

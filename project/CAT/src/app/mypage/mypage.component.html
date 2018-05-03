@@ -13,12 +13,12 @@
             <h3>Hi, {{getName()}}</h3>
 
             <hr style="background-color: gray; height: .2px">
-            <app-stock-list *ngIf="companies" [companyList]="companies"></app-stock-list>
-            <!--<ul>-->
-            <!--<li *ngFor="let stock of getUserStocks() | async">-->
-              <!--<a (click)="selectStock(stock.symbol)" style="cursor: pointer">{{ stock.name }}</a>-->
-            <!--</li>-->
-            <!--</ul>-->
+            <!--<app-stock-list *ngIf="companies" [companyList]="companies"></app-stock-list>-->
+            <ul>
+            <li *ngFor="let stock of getUserStocks() | async">
+              <a (click)="selectStock(stock.symbol)" style="cursor: pointer">{{ stock.name }}</a>
+            </li>
+            </ul>
           </div>
           <div class="col-md-2">
 

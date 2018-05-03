@@ -44,11 +44,7 @@ export class AuthService {
       .switchMap(user => {
         if (user) {
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
-          this.stockCollection.valueChanges().forEach(value => {
-            console.log("The value");
-            console.log(value);
-            this.stocks = value;
-          });
+          this.stocks = this.stockCollection.valueChanges();
           this.userID = user.uid;
           this.displayName =  user.displayName;
           this.email = user.email;
