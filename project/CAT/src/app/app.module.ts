@@ -51,6 +51,7 @@ import { StocklistItemComponent } from './stocklist-item/stocklist-item.componen
 import { StockListComponent } from './stock-list/stock-list.component';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { NewsCardComponent } from './news-card/news-card.component';
+import {ArticleParserService} from "./article-parser.service";
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -118,7 +119,7 @@ const firebaseConfig = {
     MatMenuModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [AuthService, HttpClient, JsonReaderService, LoginModalComponent, StockMarketService],
+  providers: [AuthService, HttpClient, ArticleParserService, LoginModalComponent, StockMarketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

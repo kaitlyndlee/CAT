@@ -9,6 +9,10 @@ import {StockMarketService} from "../stock-market.service";
 })
 export class StocklistItemComponent implements OnInit {
 
+  isPositive: boolean = false;
+  isNegative: boolean = false;
+  isNeutral : boolean = false;
+
   @Input() company: CompanyModel;
   constructor(stockService : StockMarketService) { }
 
@@ -16,6 +20,19 @@ export class StocklistItemComponent implements OnInit {
     return this.company.getStock();
   }
 
+
+  round (value : number) : number {
+    this.isPositive = false;
+    this.isNegative = false;
+    this.isNeutral  = false;
+    let rounded = Math.round(value * 1000) / 1000;
+
+    if (rounded < 0) this.isNegative = true;
+    if (rounded == 0) this.isNeutral = true;
+    if (rounded > 0) this.isPositive = true;
+
+    return rounded;
+  }
   ngOnInit() {
   }
 

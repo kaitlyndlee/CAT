@@ -24,6 +24,10 @@ export class StockCardComponent implements OnInit {
     return this.company;
   }
 
+  format(value : number) : string {
+    return value.toLocaleString();
+  }
+
   getCompanyStock() {
     return this.company.getStock();
   }
@@ -49,6 +53,10 @@ export class StockCardComponent implements OnInit {
       return false;
     }
     return this.getCompanyStock().quote.changePercent == 0.0;
+  }
+
+  round(value : number) {
+    return Math.round(value * 1000) / 1000
   }
 
   onMyPage() {

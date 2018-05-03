@@ -27,6 +27,19 @@
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.positive {
+  color: #019C10;
+
+}
+
+.negative {
+  color: rgb(255, 0, 0);
+}
+
+.neutral {
+  color: gray;
+}
+
 .list-group-item::after {
   content: "";
   border-radius: 5px;

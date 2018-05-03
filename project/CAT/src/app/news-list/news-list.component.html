@@ -3,14 +3,27 @@
     <h4>Relevant News</h4>
     <div class="list-group fade-in box" [ngClass]="{'d-inline-flex flex-row' : isHorizontal()}">
       <a *ngFor="let article of newsList" href="{{article.url}}" target="_blank" class="fade-in list-group-item list-group-item-action flex-column align-items-start" style="cursor:pointer">
-        <small style="float: right; color: cadetblue;">{{getDayDifference(article.datetime)}}</small>
+        <div class="row">
+          <div class="col-md-6">
+            <small [ngClass]="{positive: isPositive, negative: isNegative, neutral: isNeutral}">Article Weight: {{parse(article.summary)}}</small>
+          </div>
+          <div class="col-md-6">
+            <small style="float: right;">{{getDayDifference(article.datetime)}} </small>
+
+          </div>
+
+
+        </div>
 
         <div class="d-flex w-100 justify-content-between">
-          <h6 style="color: black; padding-bottom: 2px; border-bottom: 1px solid lightgray; " class="mb-1">{{article.headline}}</h6>
+          <h6 class="mb-1" style="color: black; padding: 0 2px 0 0; border-bottom: 1px solid lightgray;"><b>{{article.headline}}</b></h6>
+
         </div>
         <p style= "font-size: 12px" class="mb-1">{{article.summary}}</p>
         <small style="color: cadetblue;">{{article.source}}</small>
       </a>
+
     </div>
+
   </div>
 </div>

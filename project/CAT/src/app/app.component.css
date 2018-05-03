@@ -1,0 +1,9 @@
+::ng-deep .positive {
+  color: green;
+}
+::ng-deep .negative {
+  color: red;
+}
+::ng-deep .neutral {
+  color: gray;
+}

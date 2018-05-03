@@ -1,6 +1,6 @@
 <a style="cursor:pointer;" class="list-group-item list-group-item-action flex-column align-items-start" *ngIf="company.getStock()">
   <div class="w-100" *ngIf="getCompanyStock().quote">
-    <small class="text-success" style="float: right;">{{getCompanyStock().quote.percentChange}}% ({{getCompanyStock().quote.open}})</small>
+    <small [ngClass]="{positive: isPositive, negative: isNegative, neutral: isNeutral}" style="float: right;">{{getCompanyStock().quote.latestPrice}} ({{round(getCompanyStock().quote.changePercent * 100)}}%)</small>
     <small class="mb-1">{{company.name}}
       <br> </small></div> <small>({{company.symbol}}) | {{getCompanyStock().quote}}</small>
 </a>

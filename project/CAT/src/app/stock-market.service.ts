@@ -25,9 +25,9 @@ export class StockMarketService {
       StockMarketService.getCompanies(0, 100).then(data => {
         StockMarketService.companyList = data;
         StockMarketService.selectCompany(data[0].symbol);
-        console.log(data);
-        console.log(data[0]);
-        console.log(data[0].getStock());
+        // console.log(data);
+        // console.log(data[0]);
+        // console.log(data[0].getStock());
       })
     });
   }

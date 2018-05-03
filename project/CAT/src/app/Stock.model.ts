@@ -33,7 +33,7 @@ export class Stock {
   }
 
   refresh() {
-    iex.request("/stock/" + this.stockSymbol + "/batch?types=peers,quote,news,chart&range=1m&last=10").then(data => {
+    iex.request("/stock/" + this.stockSymbol + "/batch?types=peers,quote,news,chart&range=1m&last=5").then(data => {
       if(!data) {
         console.log("BAD DATA DETECTED");
         console.log(data);

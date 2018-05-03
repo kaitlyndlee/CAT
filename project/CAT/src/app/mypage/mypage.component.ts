@@ -15,7 +15,13 @@ import {StockMarketService} from '../stock-market.service';
 export class MypageComponent implements OnInit {
 
   company : CompanyModel;
-  constructor(private authService: AuthService) {}
+  companies : CompanyModel[];
+  constructor(private authService: AuthService) {
+
+    let stockSymbols: string[] = [];
+    console.log("Verify value");
+    console.log(this.authService.getUserStocks());
+  }
 
   ngOnInit() {}
 
@@ -24,6 +30,7 @@ export class MypageComponent implements OnInit {
   }
 
   selectStock(ticker: string) {
+
    StockMarketService.selectCompany(ticker);
     this.company = StockMarketService.selectedCompany;
   }

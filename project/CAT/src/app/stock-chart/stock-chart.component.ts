@@ -11,7 +11,7 @@ export class StockChartComponent implements AfterViewInit {
 
   canvas: any;
   ctx: any;
-  colors: string[] = ['rgba(0, 255, 0, .5)', 'rgba(0, 0, 255,.5)','rgba(192,192,192,1)',  'rgba(255, 0 ,0,.5)'];
+  colors: string[] = ['rgba(0, 255, 0, .5)', 'rgba(0, 0, 255,.5)','rgba(192,192,192,.5)',  'rgba(255, 0 ,0,.5)'];
   titles = ["Market Low","Market Open", "Market Close", "Market High"];
   myChart;
   symbol: string = StockMarketService.selectedCompany.symbol;
@@ -20,14 +20,25 @@ export class StockChartComponent implements AfterViewInit {
 
   }
 
-  changeColor(index: number, color: string) {
-    console.log("COlor: " + color);
-    let rgb = this.hexToRgb(color);
-    let rgbaColor = 'rgba(' + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.1)";
+  changeColor(index: number) {
+    let colorPicker : any = document.getElementById(index.toString());
+    let rgb = this.hexToRgb(colorPicker.value);
+    let rgbaColor = 'rgba(' + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.5)";
     console.log("Rgba color: " + rgbaColor);
     this.colors[index] = rgbaColor;
+    console.log(this.colors);
     this.setTimeframe("1m");
+    // this.updateChartColor(index);
+  }
 
+  updateChartColor(index : number) {
+
+    for (let i = 0; i < this.myChart.data.datasets.length; i++) {
+      this.myChart.data.datasets[index].backgroundColor = this.colors[index];
+    }
+    // this.myChart.data.datasets = datasets;
+    // this.myChart.data.labels = labels;
+    this.myChart.update();
   }
 
   setTimeframe(value : string) {
@@ -56,8 +67,6 @@ export class StockChartComponent implements AfterViewInit {
   }
 
   updateChart(chart: any) {
-    this.canvas = document.getElementById("chart");
-    this.ctx = this.canvas.getContext('2d');
     console.log("Chart");
     console.log(chart);
     let labels = [];
@@ -92,24 +101,9 @@ export class StockChartComponent implements AfterViewInit {
       datasets.push(data);
     }
 
-
-    this.myChart = new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: datasets
-      },
-      options: {
-        responsive: true,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
-            }
-          }]
-        }
-      }
-    });
+    this.myChart.data.datasets = datasets;
+    this.myChart.data.labels = labels;
+    this.myChart.update();
   }
 
   hexToRgb(hex) {
@@ -127,22 +121,35 @@ export class StockChartComponent implements AfterViewInit {
     } : null;
   }
 
-  rgbToHex(r, g, b) {
-    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  toggleBackground(index: number) {
+
   }
 
   ngAfterViewInit(): void {
-    for (let i = 0; i < this.titles.length; i++) {
-      let colorchanger :any = document.getElementById(i.toString());
-      if (colorchanger) {
-        console.log("Color changer found");
-      }
-      else {
-        console.log("Not found");
-      }
-      // colorchanger.addEventListener("click", this.changeColor(i, colorchanger.value), false);
-    }
+
+    this.createChart();
     this.setTimeframe("1m");
   }
 
+  createChart() {
+    this.canvas = document.getElementById("chart");
+    this.ctx = this.canvas.getContext('2d');
+    this.myChart = new Chart(this.ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: []
+      },
+      options: {
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
+          }]
+        }
+      }
+    });
+  }
 }
