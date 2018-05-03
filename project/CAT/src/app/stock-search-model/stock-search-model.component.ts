@@ -1,14 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StockMarketModel} from "../stock-market.model";
 import {StockMarketService} from "../stock-market.service";
-
+import * as companyList from "assets/companylist/companies.json";
 @Component({
   selector: 'app-stock-search-model',
   templateUrl: './stock-search-model.component.html',
   styleUrls: ['./stock-search-model.component.css']
 })
 export class StockSearchModelComponent implements OnInit {
-
+  companyList = companyList;
   symbols : string[] = StockMarketService.symbols;
   constructor() { }
 

@@ -1,0 +1,37 @@
+ <div class="row" *ngIf="company">
+   <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <ul class="nav nav-pills">
+          <li class="nav-item" >
+            <a href="" class="nav-link active" data-toggle="pill" data-target="#tabone">Financials</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" data-toggle="pill" data-target="#tabtwo">Trades
+              <br> </a>
+          </li>
+          <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="" data-toggle="pill" data-target="#tabthree">Peers-->
+              <!--<br>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="" data-toggle="pill" data-target="#tabthree">News-->
+              <!--<br>-->
+            <!--</a>-->
+          <!--</li>-->
+        </ul>
+        <div class="tab-content mt-2">
+          <div class="tab-pane fade" id="tabone" role="tabpanel">
+            <app-financials-tab [company]="company"></app-financials-tab>
+
+
+          </div>
+          <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+            <app-trades-tab [company]="company"></app-trades-tab>
+          </div>
+          <!--<div class="tab-pane fade" id="tabthree" role="tabpanel">-->
+            <!--<app-peers-tab [company]="company"></app-peers-tab>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>

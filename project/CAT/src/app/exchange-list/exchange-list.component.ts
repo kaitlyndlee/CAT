@@ -20,6 +20,6 @@ export class ExchangeListComponent implements OnInit {
   }
 
   selectCompany(company: CompanyModel) {
-    StocksPageComponent.selectedCompany = company;
+    StockMarketService.selectedCompany = company;
   }
 }

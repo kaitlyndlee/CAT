@@ -1,0 +1,8 @@
+.nav-item .active{
+  background-color: cadetblue;
+  color: white;
+}
+
+.nav-item {
+  color: cadetblue;
+}

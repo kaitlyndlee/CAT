@@ -56,7 +56,7 @@ export class CompanyModel {
     return this.getStock().peers;
   }
 
-  refresh() {
-    this.stock.refresh();
+  refresh() {;
+    return this.getStock().refresh();
   }
 }

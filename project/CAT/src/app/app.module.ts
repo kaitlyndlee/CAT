@@ -52,6 +52,11 @@ import { StockListComponent } from './stock-list/stock-list.component';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { NewsCardComponent } from './news-card/news-card.component';
 import {ArticleParserService} from "./article-parser.service";
+import { StockSupplementalInfoComponent } from './stock-supplemental-info/stock-supplemental-info.component';
+import { FinancialsTabComponent } from './stock-supplemental-info/financials-tab/financials-tab.component';
+import { TradesTabComponent } from './stock-supplemental-info/trades-tab/trades-tab.component';
+import { PeersTabComponent } from './stock-supplemental-info/peers-tab/peers-tab.component';
+import { StocksMainPageComponent } from './stocks-main-page/stocks-main-page.component';
 // import { FirestoreComponent } from './firestore/firestore.component';
 
 // Copy the firebaseConfig from your created project on the firebase console
@@ -89,6 +94,11 @@ const firebaseConfig = {
     StockListComponent,
     StockChartComponent,
     NewsCardComponent,
+    StockSupplementalInfoComponent,
+    FinancialsTabComponent,
+    TradesTabComponent,
+    PeersTabComponent,
+    StocksMainPageComponent,
     // FirestoreComponent
   ],
   imports: [

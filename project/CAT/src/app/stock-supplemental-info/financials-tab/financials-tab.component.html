@@ -1,0 +1,42 @@
+<div class="tab-pane fade show active" id="tabone" role="tabpanel">
+
+  <div class="row">
+
+
+    <div class="col-md-4">
+
+      <table class="table table-striped table-responsive-sm">
+        <thead>
+        <tr>
+          <th *ngFor="let header of headerData">{{header}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of rowData, let index = index">
+
+          <td>{{rowData[index]}}</td>
+          <!--<td [ngClass]="{positive: isPositive(value), negative: isNegative(value), neutral: isNeutral(value)}">{{tableData[index]}}</td>-->
+          <td *ngFor="let value of tableData, let i = index" [ngClass]="{positive: isPositive(tableData[i][index]), negative: isNegative(tableData[i][index]), neutral: isNeutral(tableData[i][index])}">{{format(tableData[i][index])}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+    <div class="col-md-8">
+
+
+      <div class="btn-group">
+        <button class="btn dropdown-toggle btn-secondary" id="optionButton" data-toggle="dropdown"> Income Statement</button>
+        <div class="dropdown-menu" style="cursor: pointer;">
+          <a class="dropdown-item" (click)="changeSelection(0)">Income Statement</a>
+          <a class="dropdown-item" (click)="changeSelection(1)">Balance Sheet</a>
+          <a class="dropdown-item" (click)="changeSelection(2)">Cash Flow</a>
+        </div>
+      </div>
+      <canvas id="chart2"></canvas>
+    </div>
+  </div>
+
+
+</div>

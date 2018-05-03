@@ -7,6 +7,7 @@ import {HomepageComponent} from './homepage/homepage.component';
 import {AboutPageComponent} from './about-page/about-page.component';
 import {GlossaryPageComponent} from './glossary-page/glossary-page.component';
 import {TutorialPageComponent} from './tutorial-page/tutorial-page.component';
+import {StocksMainPageComponent} from "./stocks-main-page/stocks-main-page.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'homepage', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'mypage', component: MypageComponent},
   {path: 'newsfeed', component: NewsfeedPageComponent},
   {path: 'stocks', component: StocksPageComponent},
+  {path: 'stocksmain', component: StocksMainPageComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'glossary', component: GlossaryPageComponent},
   {path: 'tutorial', component: TutorialPageComponent},

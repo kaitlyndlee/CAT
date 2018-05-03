@@ -7,7 +7,6 @@ export class ArticleParserService {
   positives: string[];
   negatives: string[];
   constructor() {
-    console.log(keywords);
     this.positives = (<any> keywords).positives;
     this.negatives = (<any> keywords).negatives;
   }
@@ -35,7 +34,7 @@ export class ArticleParserService {
       catch (err) {
         continue;
       }
-      return weight;
     }
+    return weight;
   }
 }

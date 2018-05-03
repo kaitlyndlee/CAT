@@ -65,13 +65,47 @@ export class StockMarketService {
       promises.push(this.createCompanyFromSymbol(this.symbols[i]));
     }
     return await Promise.all(promises).then(data => {
+
+      return data;
+    });
+  }
+
+  static getActive() {
+    return iex.request("/stock/market/list/mostactive");
+  }
+
+  static getGainers() {
+    return iex.request("/stock/market/list/gainers");
+
+  }
+
+  static getLosers() {
+    return iex.request("/stock/market/list/losers");
+
+  }
+
+  static getPercent() {
+    return iex.request("/stock/market/list/iexpercent");
+
+  }
+
+  static getVolume() {
+    return iex.request("/stock/market/list/iexvolume");
+  }
+
+
+  static async createCompaniesFromList(symbols : string[]) {
+    let promises = [];
+    for (let symbol of symbols) {
+      promises.push(this.createCompanyFromSymbol(symbol));
+    }
+    return await Promise.all(promises).then(data => {
       return data;
     });
   }
 
   static async createCompanyFromSymbol(symbol : string) : Promise<CompanyModel> {
     return iex.stockCompany(symbol).then( data => {
-      console.log(data.valueOf());
       return new CompanyModel(data);
     }).catch(reason => {
       return null;
