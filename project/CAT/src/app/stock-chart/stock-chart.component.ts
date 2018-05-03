@@ -11,7 +11,7 @@ export class StockChartComponent implements AfterViewInit {
 
   canvas: any;
   ctx: any;
-  colors: string[] = ['rgba(0, 255, 0, .5)', 'rgba(0, 0, 255,.5)','rgba(192,192,192,1)',  'rgba(255, 0 ,0,.5)'];
+  colors: string[] = ['rgba(0, 255, 0, .5)', 'rgba(0, 0, 255,.5)','rgba(192,192,192,.5)',  'rgba(255, 0 ,0,.5)'];
   titles = ["Market Low","Market Open", "Market Close", "Market High"];
   myChart;
   symbol: string = StockMarketService.selectedCompany.symbol;
@@ -28,7 +28,17 @@ export class StockChartComponent implements AfterViewInit {
     this.colors[index] = rgbaColor;
     console.log(this.colors);
     this.setTimeframe("1m");
+    // this.updateChartColor(index);
+  }
 
+  updateChartColor(index : number) {
+
+    for (let i = 0; i < this.myChart.data.datasets.length; i++) {
+      this.myChart.data.datasets[index].backgroundColor = this.colors[index];
+    }
+    // this.myChart.data.datasets = datasets;
+    // this.myChart.data.labels = labels;
+    this.myChart.update();
   }
 
   setTimeframe(value : string) {
@@ -111,6 +121,9 @@ export class StockChartComponent implements AfterViewInit {
     } : null;
   }
 
+  toggleBackground(index: number) {
+
+  }
 
   ngAfterViewInit(): void {
 

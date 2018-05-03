@@ -12,7 +12,7 @@ export class ArticleParserService {
     this.negatives = (<any> keywords).negatives;
   }
 
-  parse(feed: string) {
+  parse(feed: string) : number {
     let weight = 0;
     for (let word of this.positives) {
       if (word.length == 0) continue;

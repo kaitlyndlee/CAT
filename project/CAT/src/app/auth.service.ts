@@ -24,7 +24,7 @@ interface Stock {
 export class AuthService {
    user: Observable<User>;
    stockCollection: AngularFirestoreCollection<Stock>;
-   stocks: Observable<Stock[]>;
+   stocks: any;
    authState: any;
    userID: string;
    displayName: string;
@@ -44,7 +44,11 @@ export class AuthService {
       .switchMap(user => {
         if (user) {
           this.stockCollection = afs.collection<Stock>(`users/${user.uid}/stocks`);
-          this.stocks = this.stockCollection.valueChanges();
+          this.stockCollection.valueChanges().forEach(value => {
+            console.log("The value");
+            console.log(value);
+            this.stocks = value;
+          });
           this.userID = user.uid;
           this.displayName =  user.displayName;
           this.email = user.email;
